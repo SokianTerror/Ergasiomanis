@@ -135,14 +135,14 @@
     <Compile Include="Controllers\discountsController.cs" />
     <Compile Include="Controllers\employeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\jobsController.cs" />
+    <Compile Include="Controllers\publishersController.cs" />
+    <Compile Include="Controllers\pub_infoController.cs" />
     <Compile Include="Controllers\royschedsController.cs" />
     <Compile Include="Controllers\salesController.cs" />
     <Compile Include="Controllers\storesController.cs" />
     <Compile Include="Controllers\titleauthorsController.cs" />
     <Compile Include="Controllers\titlesController.cs" />
-    <Compile Include="Controllers\jobsController.cs" />
-    <Compile Include="Controllers\publishersController.cs" />
-    <Compile Include="Controllers\pub_infoController.cs" />
     <Compile Include="Controllers\titleviewsController.cs" />
     <Compile Include="discounts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -295,13 +295,25 @@
     <Content Include="Views\employees\Details.cshtml" />
     <Content Include="Views\employees\Edit.cshtml" />
     <Content Include="Views\employees\Index.cshtml" />
+    <Content Include="Views\jobs\Create.cshtml" />
+    <Content Include="Views\jobs\Delete.cshtml" />
+    <Content Include="Views\jobs\Details.cshtml" />
+    <Content Include="Views\jobs\Edit.cshtml" />
+    <Content Include="Views\jobs\Index.cshtml" />
+    <Content Include="Views\pub_info\Create.cshtml" />
+    <Content Include="Views\pub_info\Delete.cshtml" />
+    <Content Include="Views\pub_info\Details.cshtml" />
+    <Content Include="Views\pub_info\Edit.cshtml" />
+    <Content Include="Views\pub_info\Index.cshtml" />
+    <Content Include="Views\publishers\Create.cshtml" />
+    <Content Include="Views\publishers\Delete.cshtml" />
+    <Content Include="Views\publishers\Details.cshtml" />
+    <Content Include="Views\publishers\Edit.cshtml" />
+    <Content Include="Views\publishers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\jobs\" />
-    <Folder Include="Views\publishers\" />
-    <Folder Include="Views\pub_info\" />
     <Folder Include="Views\TitleView\" />
   </ItemGroup>
   <ItemGroup>

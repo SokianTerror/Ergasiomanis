@@ -26,5 +26,6 @@ namespace Ergasiomanis.Controllers
 
             return View();
         }
+
     }
 }

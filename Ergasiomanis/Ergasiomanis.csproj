@@ -133,6 +133,11 @@
     </Compile>
     <Compile Include="Controllers\discountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\royschedsController.cs" />
+    <Compile Include="Controllers\salesController.cs" />
+    <Compile Include="Controllers\storesController.cs" />
+    <Compile Include="Controllers\titleauthorsController.cs" />
+    <Compile Include="Controllers\titlesController.cs" />
     <Compile Include="Controllers\titleviewsController.cs" />
     <Compile Include="discounts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -250,6 +255,31 @@
     <Content Include="Views\titleviews\Details.cshtml" />
     <Content Include="Views\titleviews\Edit.cshtml" />
     <Content Include="Views\titleviews\Index.cshtml" />
+    <Content Include="Views\titles\Create.cshtml" />
+    <Content Include="Views\titles\Delete.cshtml" />
+    <Content Include="Views\titles\Details.cshtml" />
+    <Content Include="Views\titles\Edit.cshtml" />
+    <Content Include="Views\titles\Index.cshtml" />
+    <Content Include="Views\titleauthors\Create.cshtml" />
+    <Content Include="Views\titleauthors\Delete.cshtml" />
+    <Content Include="Views\titleauthors\Details.cshtml" />
+    <Content Include="Views\titleauthors\Edit.cshtml" />
+    <Content Include="Views\titleauthors\Index.cshtml" />
+    <Content Include="Views\stores\Create.cshtml" />
+    <Content Include="Views\stores\Delete.cshtml" />
+    <Content Include="Views\stores\Details.cshtml" />
+    <Content Include="Views\stores\Edit.cshtml" />
+    <Content Include="Views\stores\Index.cshtml" />
+    <Content Include="Views\sales\Create.cshtml" />
+    <Content Include="Views\sales\Delete.cshtml" />
+    <Content Include="Views\sales\Details.cshtml" />
+    <Content Include="Views\sales\Edit.cshtml" />
+    <Content Include="Views\sales\Index.cshtml" />
+    <Content Include="Views\royscheds\Create.cshtml" />
+    <Content Include="Views\royscheds\Delete.cshtml" />
+    <Content Include="Views\royscheds\Details.cshtml" />
+    <Content Include="Views\royscheds\Edit.cshtml" />
+    <Content Include="Views\royscheds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

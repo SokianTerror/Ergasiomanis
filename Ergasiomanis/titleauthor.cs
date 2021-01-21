@@ -7,18 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis.Models
+namespace Ergasiomanis
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class roysched
+    public partial class titleauthor
     {
+        public string au_id { get; set; }
         public string title_id { get; set; }
-        public Nullable<int> lorange { get; set; }
-        public Nullable<int> hirange { get; set; }
-        public Nullable<int> royalty { get; set; }
+        public Nullable<byte> au_ord { get; set; }
+        public Nullable<int> royaltyper { get; set; }
     
+        public virtual authors authors { get; set; }
         public virtual titles titles { get; set; }
     }
 }

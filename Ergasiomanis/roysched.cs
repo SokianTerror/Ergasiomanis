@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis.Models
+namespace Ergasiomanis
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class titleview
+    public partial class roysched
     {
-        public string title { get; set; }
-        public Nullable<byte> au_ord { get; set; }
-        public string au_lname { get; set; }
-        public Nullable<decimal> price { get; set; }
-        public Nullable<int> ytd_sales { get; set; }
-        public string pub_id { get; set; }
+        public string title_id { get; set; }
+        public Nullable<int> lorange { get; set; }
+        public Nullable<int> hirange { get; set; }
+        public Nullable<int> royalty { get; set; }
+    
+        public virtual titles titles { get; set; }
     }
 }

@@ -1,0 +1,50 @@
+﻿@model Ergasiomanis.titleview
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>titleview</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.au_ord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.au_ord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ytd_sales)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ytd_sales)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pub_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pub_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

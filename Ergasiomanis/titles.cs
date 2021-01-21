@@ -7,30 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis.Models
+namespace Ergasiomanis
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class publishers
+    public partial class titles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public publishers()
+        public titles()
         {
-            this.employee = new HashSet<employee>();
-            this.titles = new HashSet<titles>();
+            this.sales = new HashSet<sales>();
+            this.titleauthor = new HashSet<titleauthor>();
         }
     
+        public string title_id { get; set; }
+        public string title { get; set; }
+        public string type { get; set; }
         public string pub_id { get; set; }
-        public string pub_name { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string country { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<decimal> advance { get; set; }
+        public Nullable<int> royalty { get; set; }
+        public Nullable<int> ytd_sales { get; set; }
+        public string notes { get; set; }
+        public System.DateTime pubdate { get; set; }
     
+        public virtual publishers publishers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<employee> employee { get; set; }
-        public virtual pub_info pub_info { get; set; }
+        public virtual ICollection<sales> sales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<titles> titles { get; set; }
+        public virtual ICollection<titleauthor> titleauthor { get; set; }
+        public virtual roysched roysched { get; set; }
     }
 }

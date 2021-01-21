@@ -7,25 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis.Models
+namespace Ergasiomanis
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class jobs
+    public partial class stores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public jobs()
+        public stores()
         {
-            this.employee = new HashSet<employee>();
+            this.sales = new HashSet<sales>();
+            this.discounts = new HashSet<discounts>();
         }
     
-        public short job_id { get; set; }
-        public string job_desc { get; set; }
-        public byte min_lvl { get; set; }
-        public byte max_lvl { get; set; }
+        public string stor_id { get; set; }
+        public string stor_name { get; set; }
+        public string stor_address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<employee> employee { get; set; }
+        public virtual ICollection<sales> sales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<discounts> discounts { get; set; }
     }
 }

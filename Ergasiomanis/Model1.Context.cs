@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis.Models
+namespace Ergasiomanis
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pubsEntities2 : DbContext
+    public partial class pubsEntities : DbContext
     {
-        public pubsEntities2()
-            : base("name=pubsEntities2")
+        public pubsEntities()
+            : base("name=pubsEntities")
         {
         }
     

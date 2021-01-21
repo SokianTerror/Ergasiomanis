@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="pubsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="pubsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="authors">
           <Key>
             <PropertyRef Name="au_id" />
@@ -266,7 +266,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="pubsModel1StoreContainer">
+        <EntityContainer Name="pubsModelStoreContainer">
           <EntitySet Name="authors" EntityType="Self.authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
@@ -348,7 +348,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="pubsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="pubsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="authors">
           <Key>
             <PropertyRef Name="au_id" />
@@ -624,7 +624,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="pubsEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="pubsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="authors" EntityType="Self.authors" />
           <EntitySet Name="employee" EntityType="Self.employee" />
           <EntitySet Name="jobs" EntityType="Self.jobs" />
@@ -683,9 +683,9 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="pubsModel1StoreContainer" CdmEntityContainer="pubsEntities2">
+        <EntityContainerMapping StorageEntityContainer="pubsModelStoreContainer" CdmEntityContainer="pubsEntities">
           <EntitySetMapping Name="authors">
-            <EntityTypeMapping TypeName="pubsModel1.authors">
+            <EntityTypeMapping TypeName="pubsModel.authors">
               <MappingFragment StoreEntitySet="authors">
                 <ScalarProperty Name="au_id" ColumnName="au_id" />
                 <ScalarProperty Name="au_lname" ColumnName="au_lname" />
@@ -700,7 +700,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employee">
-            <EntityTypeMapping TypeName="pubsModel1.employee">
+            <EntityTypeMapping TypeName="pubsModel.employee">
               <MappingFragment StoreEntitySet="employee">
                 <ScalarProperty Name="emp_id" ColumnName="emp_id" />
                 <ScalarProperty Name="fname" ColumnName="fname" />
@@ -714,7 +714,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jobs">
-            <EntityTypeMapping TypeName="pubsModel1.jobs">
+            <EntityTypeMapping TypeName="pubsModel.jobs">
               <MappingFragment StoreEntitySet="jobs">
                 <ScalarProperty Name="job_id" ColumnName="job_id" />
                 <ScalarProperty Name="job_desc" ColumnName="job_desc" />
@@ -724,7 +724,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pub_info">
-            <EntityTypeMapping TypeName="pubsModel1.pub_info">
+            <EntityTypeMapping TypeName="pubsModel.pub_info">
               <MappingFragment StoreEntitySet="pub_info">
                 <ScalarProperty Name="pub_id" ColumnName="pub_id" />
                 <ScalarProperty Name="logo" ColumnName="logo" />
@@ -733,7 +733,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="publishers">
-            <EntityTypeMapping TypeName="pubsModel1.publishers">
+            <EntityTypeMapping TypeName="pubsModel.publishers">
               <MappingFragment StoreEntitySet="publishers">
                 <ScalarProperty Name="pub_id" ColumnName="pub_id" />
                 <ScalarProperty Name="pub_name" ColumnName="pub_name" />
@@ -744,7 +744,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sales">
-            <EntityTypeMapping TypeName="pubsModel1.sales">
+            <EntityTypeMapping TypeName="pubsModel.sales">
               <MappingFragment StoreEntitySet="sales">
                 <ScalarProperty Name="stor_id" ColumnName="stor_id" />
                 <ScalarProperty Name="ord_num" ColumnName="ord_num" />
@@ -756,7 +756,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="stores">
-            <EntityTypeMapping TypeName="pubsModel1.stores">
+            <EntityTypeMapping TypeName="pubsModel.stores">
               <MappingFragment StoreEntitySet="stores">
                 <ScalarProperty Name="stor_id" ColumnName="stor_id" />
                 <ScalarProperty Name="stor_name" ColumnName="stor_name" />
@@ -768,7 +768,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="titleauthor">
-            <EntityTypeMapping TypeName="pubsModel1.titleauthor">
+            <EntityTypeMapping TypeName="pubsModel.titleauthor">
               <MappingFragment StoreEntitySet="titleauthor">
                 <ScalarProperty Name="au_id" ColumnName="au_id" />
                 <ScalarProperty Name="title_id" ColumnName="title_id" />
@@ -778,7 +778,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="titles">
-            <EntityTypeMapping TypeName="pubsModel1.titles">
+            <EntityTypeMapping TypeName="pubsModel.titles">
               <MappingFragment StoreEntitySet="titles">
                 <ScalarProperty Name="title_id" ColumnName="title_id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -794,7 +794,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="discounts">
-            <EntityTypeMapping TypeName="pubsModel1.discounts">
+            <EntityTypeMapping TypeName="pubsModel.discounts">
               <MappingFragment StoreEntitySet="discounts">
                 <ScalarProperty Name="discounttype" ColumnName="discounttype" />
                 <ScalarProperty Name="stor_id" ColumnName="stor_id" />
@@ -805,7 +805,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="roysched">
-            <EntityTypeMapping TypeName="pubsModel1.roysched">
+            <EntityTypeMapping TypeName="pubsModel.roysched">
               <MappingFragment StoreEntitySet="roysched">
                 <ScalarProperty Name="title_id" ColumnName="title_id" />
                 <ScalarProperty Name="lorange" ColumnName="lorange" />
@@ -815,7 +815,7 @@ warning 6002: The table/view 'pubs.dbo.titleview' does not have a primary key de
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="titleview">
-            <EntityTypeMapping TypeName="pubsModel1.titleview">
+            <EntityTypeMapping TypeName="pubsModel.titleview">
               <MappingFragment StoreEntitySet="titleview">
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="au_ord" ColumnName="au_ord" />

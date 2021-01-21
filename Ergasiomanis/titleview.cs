@@ -7,19 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis.Models
+namespace Ergasiomanis
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class discounts
+    public partial class titleview
     {
-        public string discounttype { get; set; }
-        public string stor_id { get; set; }
-        public Nullable<short> lowqty { get; set; }
-        public Nullable<short> highqty { get; set; }
-        public decimal discount { get; set; }
-    
-        public virtual stores stores { get; set; }
+        public string title { get; set; }
+        public Nullable<byte> au_ord { get; set; }
+        public string au_lname { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<int> ytd_sales { get; set; }
+        public string pub_id { get; set; }
     }
 }

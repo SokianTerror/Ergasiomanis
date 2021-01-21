@@ -131,8 +131,13 @@
     <Compile Include="authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\authorsController.cs" />
     <Compile Include="Controllers\discountsController.cs" />
+    <Compile Include="Controllers\employeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\jobsController.cs" />
+    <Compile Include="Controllers\publishersController.cs" />
+    <Compile Include="Controllers\pub_infoController.cs" />
     <Compile Include="Controllers\titleviewsController.cs" />
     <Compile Include="discounts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -250,11 +255,23 @@
     <Content Include="Views\titleviews\Details.cshtml" />
     <Content Include="Views\titleviews\Edit.cshtml" />
     <Content Include="Views\titleviews\Index.cshtml" />
+    <Content Include="Views\authors\Create.cshtml" />
+    <Content Include="Views\authors\Delete.cshtml" />
+    <Content Include="Views\authors\Details.cshtml" />
+    <Content Include="Views\authors\Edit.cshtml" />
+    <Content Include="Views\authors\Index.cshtml" />
+    <Content Include="Views\employees\Create.cshtml" />
+    <Content Include="Views\employees\Delete.cshtml" />
+    <Content Include="Views\employees\Details.cshtml" />
+    <Content Include="Views\employees\Edit.cshtml" />
+    <Content Include="Views\employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\jobs\" />
+    <Folder Include="Views\publishers\" />
+    <Folder Include="Views\pub_info\" />
     <Folder Include="Views\TitleView\" />
   </ItemGroup>
   <ItemGroup>

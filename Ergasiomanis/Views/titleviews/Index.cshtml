@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.pub_id)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  id1=item.title , id2=item.au_lname  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.title  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.title  })
         </td>
     </tr>
 }

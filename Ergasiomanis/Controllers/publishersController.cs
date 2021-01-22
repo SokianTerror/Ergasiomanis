@@ -82,7 +82,7 @@ namespace Ergasiomanis.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers, [Bind(Include = "pr_info,city,logo")] pub_info pub_info)
+        public ActionResult Edit([Bind(Include = "pub_id,pub_name,city,state,country,logo,pr_info")] publishers publishers)
         {
             if (ModelState.IsValid)
             {

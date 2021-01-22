@@ -82,11 +82,13 @@ namespace Ergasiomanis.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers)
+        public ActionResult Edit([Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers, [Bind(Include = "pr_info,city,logo")] pub_info pub_info)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(publishers).State = EntityState.Modified;
+                db.SaveChanges();
+                db.Entry(pub_info).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -40,7 +40,7 @@ namespace Ergasiomanis.Controllers
         // GET: pub_info/Create
         public ActionResult Create()
         {
-            ViewBag.pub_id1 = new SelectList(db.publishers, "pub_id", "pub_name");
+            ViewBag.pub_id = new SelectList(db.publishers, "pub_id", "pub_name");
             return View();
         }
 

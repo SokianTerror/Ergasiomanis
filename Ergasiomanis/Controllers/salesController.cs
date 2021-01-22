@@ -41,6 +41,7 @@ namespace Ergasiomanis.Controllers
         {
             ViewBag.stor_id = new SelectList(db.stores, "stor_id", "stor_name");
             ViewBag.title_id = new SelectList(db.titles, "title_id", "title");
+            ViewBag.ord_num = new SelectList(db.titles, "ord_num", "order_number");
             return View();
         }
 
@@ -60,17 +61,18 @@ namespace Ergasiomanis.Controllers
 
             ViewBag.stor_id = new SelectList(db.stores, "stor_id", "stor_name", sales.stor_id);
             ViewBag.title_id = new SelectList(db.titles, "title_id", "title", sales.title_id);
+            ViewBag.ord_num = new SelectList(db.titles, "ord_num", "order_number", sales.ord_num);
             return View(sales);
         }
 
         // GET: sales/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id1, string id2, string id3)
         {
-            if (id == null)
+            if (id1 == null  || id2 == null || id3 == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sales sales = db.sales.Find(id);
+            sales sales = db.sales.Find(id1,id2,id3);
             if (sales == null)
             {
                 return HttpNotFound();
@@ -95,17 +97,18 @@ namespace Ergasiomanis.Controllers
             }
             ViewBag.stor_id = new SelectList(db.stores, "stor_id", "stor_name", sales.stor_id);
             ViewBag.title_id = new SelectList(db.titles, "title_id", "title", sales.title_id);
+            ViewBag.ord_num  = new SelectList(db.titles, "ord_num", "order_number", sales.ord_num);
             return View(sales);
         }
 
         // GET: sales/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string id1, string id2, string id3)
         {
-            if (id == null)
+            if (id1 == null || id2 == null || id3 == null )
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sales sales = db.sales.Find(id);
+            sales sales = db.sales.Find(id1,id2,id3);
             if (sales == null)
             {
                 return HttpNotFound();
@@ -116,9 +119,9 @@ namespace Ergasiomanis.Controllers
         // POST: sales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string id1, string id2, string id3)
         {
-            sales sales = db.sales.Find(id);
+            sales sales = db.sales.Find(id1,id2,id3);
             db.sales.Remove(sales);
             db.SaveChanges();
             return RedirectToAction("Index");

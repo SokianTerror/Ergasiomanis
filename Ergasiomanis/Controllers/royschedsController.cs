@@ -22,13 +22,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: royscheds/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id,string id2,string id3)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            roysched roysched = db.roysched.Find(id);
+            roysched roysched = db.roysched.Find(id,id2,id3);
             if (roysched == null)
             {
                 return HttpNotFound();

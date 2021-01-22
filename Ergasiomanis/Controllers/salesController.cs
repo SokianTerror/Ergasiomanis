@@ -22,13 +22,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: sales/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id1,string id2,string id3)
         {
-            if (id == null)
+            if (id1 == null || id2 == null || id3 == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sales sales = db.sales.Find(id);
+            sales sales = db.sales.Find(id1,id2,id3);
             if (sales == null)
             {
                 return HttpNotFound();

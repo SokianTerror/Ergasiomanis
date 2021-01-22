@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.pub_info.pr_info)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pub_info.logo)
+        </th>
         <th></th>
     </tr>
 
@@ -46,6 +49,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.pub_info.pr_info)
         </td>
+        <td>@Html.DisplayFor(modelItem => item.pub_info.logo)</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.pub_id }) |
             @Html.ActionLink("Details", "Details", new { id=item.pub_id }) |

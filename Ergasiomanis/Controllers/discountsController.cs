@@ -22,13 +22,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: discounts/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id1, decimal id2)
         {
-            if (id == null)
+            if (id1 == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            discounts discounts = db.discounts.Find(id);
+            discounts discounts = db.discounts.Find(id1,id2);
             if (discounts == null)
             {
                 return HttpNotFound();
@@ -62,13 +62,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: discounts/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id1 , decimal id2)
         {
-            if (id == null)
+            if (id1 == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            discounts discounts = db.discounts.Find(id);
+            discounts discounts = db.discounts.Find(id1,id2);
             if (discounts == null)
             {
                 return HttpNotFound();
@@ -95,13 +95,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: discounts/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string id1, decimal id2)
         {
-            if (id == null)
+            if (id1 == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            discounts discounts = db.discounts.Find(id);
+            discounts discounts = db.discounts.Find(id1,id2);
             if (discounts == null)
             {
                 return HttpNotFound();

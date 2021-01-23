@@ -22,13 +22,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: royscheds/Details/5
-        public ActionResult Details(string id,string id2,string id3)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            roysched roysched = db.roysched.Find(id,id2,id3);
+            roysched roysched = db.roysched.Find(id);
             if (roysched == null)
             {
                 return HttpNotFound();
@@ -62,13 +62,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: royscheds/Edit/5
-        public ActionResult Edit(string id1, string id2, string id3, string id4)
+        public ActionResult Edit(string id)
         {
-            if (id1 == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            roysched roysched = db.roysched.Find(id1,id2,id3,id4);
+            roysched roysched = db.roysched.Find(id);
             if (roysched == null)
             {
                 return HttpNotFound();

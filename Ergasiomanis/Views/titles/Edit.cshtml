@@ -58,22 +58,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.roysched.lorange, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.roysched.lorange, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.roysched.lorange, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.roysched.hirange, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.roysched.hirange, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.roysched.hirange, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(model => model.royalty, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.royalty, new { htmlAttributes = new { @class = "form-control" } })

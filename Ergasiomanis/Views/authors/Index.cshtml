@@ -65,7 +65,7 @@
             @Html.DisplayFor(modelItem => item.contract)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.au_id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.au_id } ,new { @class = "glyphicon glyphicon-pencil"}) |
             @Html.ActionLink("Details", "Details", new { id=item.au_id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.au_id })
         </td>

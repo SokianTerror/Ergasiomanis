@@ -119,6 +119,9 @@ namespace Ergasiomanis.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             publishers publishers = db.publishers.Find(id);
+            pub_info pub_info = db.pub_info.Find(id);
+            db.pub_info.Remove(pub_info);
+            db.SaveChanges();
             db.publishers.Remove(publishers);
             db.SaveChanges();
             return RedirectToAction("Index");

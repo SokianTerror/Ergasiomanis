@@ -22,13 +22,13 @@ namespace Ergasiomanis.Controllers
         }
 
         // GET: publishers/Details/5
-        public ActionResult Details(string id,string id2, string id3)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            publishers publishers = db.publishers.Find(id,id2,id3);
+            publishers publishers = db.publishers.Find(id);
             if (publishers == null)
             {
                 return HttpNotFound();

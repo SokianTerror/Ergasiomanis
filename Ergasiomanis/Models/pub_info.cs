@@ -7,23 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis
+namespace Ergasiomanis.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class employee
+    public partial class pub_info
     {
-        public string emp_id { get; set; }
-        public string fname { get; set; }
-        public string minit { get; set; }
-        public string lname { get; set; }
-        public short job_id { get; set; }
-        public Nullable<byte> job_lvl { get; set; }
         public string pub_id { get; set; }
-        public System.DateTime hire_date { get; set; }
+        public byte[] logo { get; set; }
+        public string pr_info { get; set; }
     
-        public virtual jobs jobs { get; set; }
         public virtual publishers publishers { get; set; }
     }
 }

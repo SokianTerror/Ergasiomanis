@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Ergasiomanis;
+using Ergasiomanis.Models;
 
 namespace Ergasiomanis.Controllers
 {

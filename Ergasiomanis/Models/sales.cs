@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ergasiomanis
+namespace Ergasiomanis.Models
 {
     using System;
     using System.Collections.Generic;

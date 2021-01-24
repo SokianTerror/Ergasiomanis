@@ -26,5 +26,6 @@ namespace Ergasiomanis.Models
         [Required]    
         [Range(0,250, ErrorMessage ="Maximum level must be less than 250 and greater than Minimum level!")]
         public byte max_lvl;
+
     }
 }

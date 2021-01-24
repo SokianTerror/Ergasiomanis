@@ -8,7 +8,7 @@ namespace Ergasiomanis.Models
 {
     public class authorsMetadata
     {
-        [Display(Name = "Author id")]
+        [Display(Name = "Author Id")]
         [Required]
         [StringLength(11, ErrorMessage = "Author id should not be more than 11 characters!")]
         public string au_id;

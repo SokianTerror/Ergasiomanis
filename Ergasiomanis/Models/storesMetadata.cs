@@ -8,7 +8,7 @@ namespace Ergasiomanis.Models
 {
     public class storesMetadata
     {
-        [Display(Name = "Store id")]
+        [Display(Name = "Store Id")]
         [Required]
         [StringLength(4, MinimumLength = 4, ErrorMessage = "Store id must be 4 characters!")]
         public string stor_id;

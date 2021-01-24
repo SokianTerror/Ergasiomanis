@@ -1585,10 +1585,11 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 100%;
   }
 }
 @media (min-width: 992px) {
@@ -4745,7 +4746,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: forestgreen;
 }
 .navbar-inverse .navbar-link {
   color: #9d9d9d;
@@ -5032,6 +5033,7 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
+  position:absolute;
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;

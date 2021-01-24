@@ -4,49 +4,75 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/Bootstrap.css")
+    @Styles.Render("~/Content/ergmvc.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
 
-                    <li>@Html.ActionLink("Authors", "Index", "authors")</li>
-                    <li>@Html.ActionLink("Discounts", "Index", "discounts")</li>
-                    <li>@Html.ActionLink("Employees", "Index", "employees")</li>
-                    <li>@Html.ActionLink("Jobs", "Index", "jobs")</li>
-                    <li>@Html.ActionLink("Publishers", "Index", "publishers")</li>
-                    <li>@Html.ActionLink("Royscheds", "Index", "royscheds")</li>
-                    <li>@Html.ActionLink("Sales", "Index", "sales")</li>
-                    <li>@Html.ActionLink("Stores", "Index", "stores")</li>
-                    <li>@Html.ActionLink("Title Authors", "Index", "titleauthors")</li>
-                    <li>@Html.ActionLink("Titles", "Index", "titles")</li>
-                    <li>@Html.ActionLink("TitleViews", "Index", "titleviews")</li>
-
-                </ul>
-            </div>
+            <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="nav-item">@Html.ActionLink("About", "About", "Home")</li>
+            <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li class="nav-item">@Html.ActionLink("Authors", "Index", "authors")</li>
+            <li class="nav-item">@Html.ActionLink("Discounts", "Index", "discounts")</li>
+            <li class="nav-item">@Html.ActionLink("Employees", "Index", "employees")</li>
+            <li class="nav-item">@Html.ActionLink("Jobs", "Index", "jobs")</li>
+            <li class="nav-item">@Html.ActionLink("Publishers", "Index", "publishers")</li>
+            <li class="nav-item">@Html.ActionLink("Royscheds", "Index", "royscheds")</li>
+            <li class="nav-item">@Html.ActionLink("Sales", "Index", "sales")</li>
+            <li class="nav-item">@Html.ActionLink("Stores", "Index", "stores")</li>
+            <li class="nav-item">@Html.ActionLink("Title Authors", "Index", "titleauthors")</li>
+            <li class="nav-item">@Html.ActionLink("Titles", "Index", "titles")</li>
+            <li class="nav-item">@Html.ActionLink("TitleViews", "Index", "titleviews")</li>
+        </ul>
         </div>
+    </nav>-->
+    <div class="menu-bar">
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>
+                <a href=#>About Authors/Titles</a>
+                <div class="sub-menu">
+                    <ul>
+                        <li>@Html.ActionLink("Authors", "Index", "authors")</li>
+                        <li>@Html.ActionLink("Title Authors", "Index", "titleauthors")</li>
+                        <li>@Html.ActionLink("Royscheds", "Index", "royscheds")</li>
+                        <li>@Html.ActionLink("Titles", "Index", "titles")</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href=#>About Sales</a>
+                <div class="sub-menu">
+                    <ul>
+                        <li>@Html.ActionLink("Sales", "Index", "sales")</li>
+                        <li>@Html.ActionLink("Discounts", "Index", "discounts")</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href=#>About Workers</a>
+                <div class="sub-menu">
+                    <ul>
+                        <li><a href="#">@Html.ActionLink("Jobs", "Index", "jobs")</a></li>
+                        <li><a href="#">@Html.ActionLink("Employees", "Index", "employees")</a></li>
+                        <li><a href="#">@Html.ActionLink("Publishers", "Index", "publishers")</a></li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

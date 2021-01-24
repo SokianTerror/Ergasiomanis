@@ -1,0 +1,82 @@
+*{
+padding: 0;
+margin: 0;
+}
+body
+{
+    background-size: cover;
+    background-image: url(greenbookstore.jpeg);
+    background-position: center;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.table {
+    color: black;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 25px;
+}
+
+.menu-bar{
+    background: #216e37;
+    text-align: left;
+    height:80px;
+    color: white;
+}
+
+.menu-bar ul{
+    display: inline-flex;
+    list-style: none;
+    color: #fff;
+}
+.menu-bar ul li {
+    text-align:center;
+    width: 180px;
+    margin: 15px;
+    padding: 15px;
+    
+}
+.menu-bar ul li a
+{
+    text-decoration: none;
+    color: #fff;
+}
+.active, .menu-bar ul li:hover
+{
+    background: #315d49;
+    border-radius: 3px;
+}
+
+.sub-menu
+{
+    display: none;
+}
+.menu-bar ul li:hover .sub-menu
+{
+    display: block;
+    position:absolute;
+    background: #315d49;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.menu-bar ul li:hover .sub-menu ul{
+    display:block;
+}
+
+.menu-bar ul li:hover .sub-menu ul li
+{
+    width: 150px;
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    border-radius:0;
+    text-align: left;
+}
+.menu-bar ul li:hover .sub-menu ul li:last-child
+{
+    border-bottom: none;
+}
+.menu-bar ul li:hover .sub-menu ul li a:hover
+{
+    color: #ccc;
+}

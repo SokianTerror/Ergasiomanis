@@ -49,7 +49,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.pub_info.pr_info)
         </td>
-        <td>@Html.DisplayFor(modelItem => item.pub_info.logo)</td>
+        <td style="max-width:150px">@Html.DisplayFor(modelItem => item.pub_info.logo, new { @style = "max-width:150px" })</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.pub_id }) |
             @Html.ActionLink("Details", "Details", new { id = item.pub_id }) |

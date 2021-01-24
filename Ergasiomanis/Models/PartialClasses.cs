@@ -17,4 +17,9 @@ namespace Ergasiomanis.Models
     public partial class discounts 
     { 
     }
+
+    [MetadataType(typeof(storesMetadata))]
+    public partial class stores 
+    { 
+    }
 }

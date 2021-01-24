@@ -16,6 +16,13 @@ body
     border-radius: 25px;
 }
 
+.buttona {
+    background: rgba(255,255,255,0.9);
+    border-radius: 3px;
+    border-color: #e7e7e7;
+    border: 2px;
+}
+
 .menu-bar{
     background: #216e37;
     text-align: left;

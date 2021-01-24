@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.titles.title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.title_id, id2 = item.lorange,id3 = item.hirange }) |
-            @Html.ActionLink("Details", "Details", new { id = item.title_id, id2 = item.lorange, id3 = item.hirange }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.title_id, id2 = item.lorange, id3 = item.hirange })
+            @Html.ActionLink("Edit", "Edit", new { id1=item.title_id, id2 = item.lorange,id3 = item.hirange, id4 = item.royalty }) |
+            @Html.ActionLink("Details", "Details", new { id1 = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty }) |
+            @Html.ActionLink("Delete", "Delete", new { id1 = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty })
         </td>
     </tr>
 }

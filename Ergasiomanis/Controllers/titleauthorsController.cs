@@ -116,9 +116,9 @@ namespace Ergasiomanis.Controllers
         // POST: titleauthors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string id1, string id2)
         {
-            titleauthor titleauthor = db.titleauthor.Find(id);
+            titleauthor titleauthor = db.titleauthor.Find(id1,id2);
             db.titleauthor.Remove(titleauthor);
             db.SaveChanges();
             return RedirectToAction("Index");

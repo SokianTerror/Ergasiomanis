@@ -18,6 +18,8 @@ namespace Ergasiomanis.Controllers
         // GET: publishers
         public ActionResult Index()
         {
+            List<publishers> pubList = db.publishers.ToList();
+            ViewBag.publishers = pubList;
             var publishers = db.publishers.Include(p => p.pub_info);
             return View(publishers.ToList());
         }
@@ -120,9 +122,28 @@ namespace Ergasiomanis.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             publishers publishers = db.publishers.Find(id);
-            pub_info pub_info = db.pub_info.Find(id);
-            db.pub_info.Remove(pub_info);
-            db.SaveChanges();
+            foreach(pub_info egg in db.pub_info.Where(x=>x.pub_id == id))
+            {
+                db.pub_info.Remove(egg);
+                db.pub_info.Find
+            }
+            foreach(titles egg in db.titles.Where(x => x.pub_id == id))
+            {
+                foreach(titleauthor egg2 in db.titleauthor.Where(x=> x.title_id == egg.title_id))
+                {
+                    db.titleauthor.Remove(egg2);
+                }
+                foreach(sales egg3 in db.sales.Where(x=> x.title_id == egg.title_id))
+                {
+                    db.sales.Remove(egg3);
+                }
+                db.titles.Remove(egg);
+
+                foreach(roysched egg4 in db.roysched.Where(x=> x.title_id == egg.title_id))
+                {
+                    db.roysched.Remove(egg4);
+                }
+            }
             db.publishers.Remove(publishers);
             db.SaveChanges();
             return RedirectToAction("Index");

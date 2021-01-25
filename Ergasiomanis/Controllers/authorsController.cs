@@ -111,6 +111,10 @@ namespace Ergasiomanis.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             authors authors = db.authors.Find(id);
+            foreach(titleauthor eggrafi in db.titleauthor.Where(x=> x.au_id == id))
+            {
+                db.titleauthor.Remove(eggrafi);
+            }
             db.authors.Remove(authors);
             db.SaveChanges();
             return RedirectToAction("Index");

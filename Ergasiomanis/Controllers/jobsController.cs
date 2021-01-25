@@ -110,6 +110,10 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
+            foreach(employee egg in db.employee.Where(x=> x.job_id == id))
+            {
+                db.employee.Remove(egg);
+            }
             jobs jobs = db.jobs.Find(id);
             db.jobs.Remove(jobs);
             db.SaveChanges();

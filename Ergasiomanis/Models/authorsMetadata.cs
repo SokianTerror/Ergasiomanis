@@ -8,7 +8,7 @@ namespace Ergasiomanis.Models
 {
     public class authorsMetadata
     {
-        [Display(Name = "Author id")]
+        [Display(Name = "Author Id")]
         [Required]
         [StringLength(11, ErrorMessage = "Author id should not be more than 11 characters!")]
         public string au_id;
@@ -37,11 +37,11 @@ namespace Ergasiomanis.Models
         public string city;
 
         [Display(Name = "State")]
-        [StringLength(2, MinimumLength = 2, ErrorMessage = "State name should be 2 characters.")]
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "State name must be 2 characters.")]
         public string state;
 
         [Display(Name = "Zip")]
-        [StringLength(5, MinimumLength = 5, ErrorMessage = "Zip should be 5 numbers.")]
+        [StringLength(5, MinimumLength = 5, ErrorMessage = "Zip must be 5 numbers.")]
         public string zip;
 
         [Display(Name = "Contract")]

@@ -125,7 +125,7 @@ namespace Ergasiomanis.Controllers
             foreach(pub_info egg in db.pub_info.Where(x=>x.pub_id == id))
             {
                 db.pub_info.Remove(egg);
-                db.pub_info.Find
+                //db.pub_info.Find
             }
             foreach(titles egg in db.titles.Where(x => x.pub_id == id))
             {

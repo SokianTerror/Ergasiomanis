@@ -18,8 +18,10 @@ namespace Ergasiomanis.Models
         [StringLength(6, MinimumLength = 6, ErrorMessage = "Title Id must be 6 characters!")]
         public string title_id;
 
-        [Display(Name = "")]
+        [Display(Name = "Author Order")]
         public byte au_ord;
 
+        [Display(Name = "Royalty per Book")]
+        public int royaltyper;
     }
 }

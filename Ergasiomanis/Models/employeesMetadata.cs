@@ -28,5 +28,18 @@ namespace Ergasiomanis.Models
         [Display(Name = "Job Id")]
         [Required]
         public short job_id;
+
+        [Display(Name = "Job Level")]
+        public byte job_lvl;
+
+        [Display(Name = "Publisher Id")]
+        [Required]
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "Pushlisher Id must be 4 characters!")]
+        public string pub_id;
+
+        [Display(Name = "Hire Date")]
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime hire_date;
     }
 }

@@ -119,10 +119,33 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            titles titles = db.titles.Find(id);
-            db.titles.Remove(titles);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                titles titles = db.titles.Find(id);
+                foreach (titleauthor egg in db.titleauthor.Where(x => x.title_id == id))
+                {
+                    db.titleauthor.Remove(egg);
+                }
+                foreach (sales egg2 in db.sales.Where(x => x.title_id == id))
+                {
+                    foreach (stores egg3 in db.stores.Where(x => x.stor_id == egg2.stor_id))
+                    {
+                        db.stores.Remove(egg3);
+                    }
+                    db.sales.Remove(egg2);
+                }
+                foreach (roysched egg4 in db.roysched.Where(x => x.title_id == id))
+                {
+                    db.roysched.Remove(egg4);
+                }
+                db.titles.Remove(titles);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

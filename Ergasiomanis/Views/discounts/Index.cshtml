@@ -35,9 +35,7 @@
             @Html.DisplayFor(modelItem => item.stores.stor_name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id1=item.discounttype, id2=item.discount }) |
-            @Html.ActionLink("Details", "Details", new { id1 = item.discounttype, id2 = item.discount }) |
-            @Html.ActionLink("Delete", "Delete", new { id1 = item.discounttype, id2 = item.discount })
+            @Html.ActionLink("Details", "Details", new { id1 = item.discounttype, id2 = item.discount }) 
         </td>
     </tr>
 }

@@ -110,10 +110,21 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            stores stores = db.stores.Find(id);
-            db.stores.Remove(stores);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                stores stores = db.stores.Find(id);
+                foreach (sales egg in db.sales.Where(x => x.title_id == id))
+                {
+                    db.sales.Remove(egg);
+                }
+                db.stores.Remove(stores);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -122,6 +122,7 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id1, string id2, string id3)
         {
+
             sales sales = db.sales.Find(id1,id2,id3);
             db.sales.Remove(sales);
             db.SaveChanges();

@@ -17,19 +17,23 @@ namespace Ergasiomanis.Controllers
 
         // GET: royscheds
         public ActionResult Index()
+            
         {
-            var roysched = db.roysched.Include(r => r.titles);
+            string qr = "select * from roysched";
+            IEnumerable<roysched> roysched = db.Database.SqlQuery<roysched>(qr);
             return View(roysched.ToList());
+
         }
 
         // GET: royscheds/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id,int id2,int id3,int id4)
         {
+            string qr = "select * from roysched where title_id=@p0 and lorange=@p1 and hirange=@p2 and royalty=@p3";
+            roysched roysched = db.roysched.SqlQuery(qr,  id, id2, id3, id4 ).SingleOrDefault();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            roysched roysched = db.roysched.Find(id);
             if (roysched == null)
             {
                 return HttpNotFound();
@@ -51,6 +55,9 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "title_id,lorange,hirange,royalty")] roysched roysched)
         {
+            //string qr = "insert into roysched values (@p0,@p1,@p2,@p3) ";
+            //IEnumerable<roysched> roysched = db.Database.SqlQuery<roysched>(qr, id, new int[] { id2, id3, id4 });
+
             if (ModelState.IsValid)
             {
                 db.roysched.Add(roysched);

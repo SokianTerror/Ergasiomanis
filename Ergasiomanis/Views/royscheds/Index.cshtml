@@ -26,6 +26,8 @@
         <th></th>
     </tr>
 
+
+
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -38,12 +40,10 @@
             @Html.DisplayFor(modelItem => item.royalty)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.titles.title)
+            @Html.DisplayFor(modelItem => item.title_id)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id1=item.title_id, id2 = item.lorange,id3 = item.hirange, id4 = item.royalty }) |
-            @Html.ActionLink("Details", "Details", new { id1 = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty }) |
-            @Html.ActionLink("Delete", "Delete", new { id1 = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty })
+            @Html.ActionLink("Details", "Details", new { id = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty }) 
         </td>
     </tr>
 }

@@ -121,33 +121,46 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            publishers publishers = db.publishers.Find(id);
-            foreach(pub_info egg in db.pub_info.Where(x=>x.pub_id == id))
-            {
-                db.pub_info.Remove(egg);
-                db.pub_info.Find
-            }
-            foreach(titles egg in db.titles.Where(x => x.pub_id == id))
-            {
-                foreach(titleauthor egg2 in db.titleauthor.Where(x=> x.title_id == egg.title_id))
+            try {
+                publishers publishers = db.publishers.Find(id);
+                foreach (pub_info egg in db.pub_info.Where(x => x.pub_id == id))
                 {
-                    db.titleauthor.Remove(egg2);
+                    db.pub_info.Remove(egg);
+                    // db.pub_info.Find
                 }
-                foreach(sales egg3 in db.sales.Where(x=> x.title_id == egg.title_id))
+                foreach (titles egg in db.titles.Where(x => x.pub_id == id))
                 {
-                    db.sales.Remove(egg3);
-                }
-                db.titles.Remove(egg);
+                    foreach (titleauthor egg2 in db.titleauthor.Where(x => x.title_id == egg.title_id))
+                    {
+                        db.titleauthor.Remove(egg2);
+                    }
+                    foreach (sales egg3 in db.sales.Where(x => x.title_id == egg.title_id))
+                    {
+                        foreach (stores egg6 in db.stores.Where(x => x.stor_id == egg3.stor_id))
+                        {
+                            db.stores.Remove(egg6);
+                        }
+                        db.sales.Remove(egg3);
+                    }
+                    db.titles.Remove(egg);
+                    foreach (roysched egg4 in db.roysched.Where(x => x.title_id == egg.title_id))
+                    {
+                        db.roysched.Remove(egg4);
+                        return RedirectToAction("Index");
+                    }
 
-                foreach(roysched egg4 in db.roysched.Where(x=> x.title_id == egg.title_id))
-                {
-                    db.roysched.Remove(egg4);
                 }
+                foreach (employee egg5 in db.employee.Where(x => x.pub_id == id)) {
+                    db.employee.Remove(egg5);
+                }
+                db.publishers.Remove(publishers);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            } catch(Exception e)
+            {
+                return RedirectToAction("Index");
             }
-            db.publishers.Remove(publishers);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            }
 
         protected override void Dispose(bool disposing)
         {

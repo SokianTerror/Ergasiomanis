@@ -47,4 +47,9 @@ namespace Ergasiomanis.Models
     public partial class employee
     {
     }
+
+    [MetadataType(typeof(publishersMetadata))]
+    public partial class publishers 
+    { 
+    }
 }

@@ -52,11 +52,12 @@
         </dd>
 
         <dt>
+
             @Html.DisplayNameFor(model => model.pub_info.logo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.pub_info.logo)
+            <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= Model.pub_id })>
         </dd>
 
     </dl>

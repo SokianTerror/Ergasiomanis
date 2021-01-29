@@ -46,6 +46,21 @@ namespace Ergasiomanis.Controllers
             return View();
         }
 
+        public ActionResult logo(string id)
+        {
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            publishers publisher = db.publishers.Find(id);
+            if (publisher == null)
+            {
+                return HttpNotFound();
+            }
+            return File(publisher.pub_info.logo, "image/png");
+        }
+
         // POST: publishers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

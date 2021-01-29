@@ -33,29 +33,36 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.pub_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.state)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pub_info.pr_info)
-        </td>
-        <td>@Html.DisplayFor(modelItem => item.pub_info.logo)</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pub_id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.pub_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pub_id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.pub_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.city)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.state)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.country)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.pub_info.pr_info)
+    </td>
+    <td>
+        @if (item.pub_info != null && item.pub_info.logo != null)
+        {
+        <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= item.pub_id })>
+
+    }
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.pub_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.pub_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.pub_id })
+    </td>
+</tr>
 }
 
 </table>

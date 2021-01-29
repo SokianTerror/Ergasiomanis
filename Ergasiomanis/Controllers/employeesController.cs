@@ -17,9 +17,61 @@ namespace Ergasiomanis.Controllers
 
         // GET: employees
         public ActionResult Index()
-        {
-            var employee = db.employee.Include(e => e.jobs).Include(e => e.publishers);
-            return View(employee.ToList());
+        {   
+
+            //var employee = db.employee.Include(e => e.jobs).Include(e => e.publishers);
+            IQueryable<employee> list = db.employee.Include(e => e.jobs).Include(e => e.publishers);
+            string employeeLastName = Request.QueryString["employeeLastName"];
+            string employeeFirstName = Request.QueryString["employeeFirstName"];
+            string employeeMinit = Request.QueryString["employeeMinit"];
+            string employeeFromJobLevel = Request.QueryString["employeeFromJobLevel"];
+            string employeeToJobLevel = Request.QueryString["employeeToJobLevel"]; 
+            string employeeFromHireDate = Request.QueryString["employeeFromHireDate"];
+            string employeeToHireDate = Request.QueryString["employeeToHireDate"];
+            string employeeJobDesc = Request.QueryString["employeeJobDesc"];
+            string employeePublisherName = Request.QueryString["employeePublisherName"];
+
+            if(employeeLastName != null && employeeLastName != "")
+            {
+                list = list.Where(m => m.lname == employeeLastName);
+            }
+            if(employeeFirstName != null && employeeFirstName != "")
+            {
+                list = list.Where(m => m.fname == employeeFirstName);
+            }
+            if(employeeMinit !=null && employeeMinit != "")
+            {
+                list = list.Where(m => m.minit == employeeMinit);
+            }
+            if(employeeFromJobLevel !=null && employeeFromJobLevel !="")
+            {
+                byte employeeFromJobLevel2 = Convert.ToByte(employeeFromJobLevel);
+                list = list.Where(m => m.job_lvl >= employeeFromJobLevel2);
+            }
+            if(employeeToJobLevel !=null && employeeToJobLevel != "")
+            {
+                byte employeeToJobLevel2 = Convert.ToByte(employeeToJobLevel);
+                list = list.Where(m => m.job_lvl <= employeeToJobLevel2);    
+            }
+            if(employeeFromHireDate !=null && employeeToHireDate != "")
+            {
+                DateTime employeeFromHireDate2 = DateTime.Parse(employeeFromHireDate);
+                list = list.Where(m => m.hire_date >= employeeFromHireDate2);
+            }
+            if(employeeToHireDate != null && employeeToHireDate != "")
+            {
+                DateTime employeeToHireDate2 = DateTime.Parse(employeeToHireDate);
+                list = list.Where(m => m.hire_date <= employeeToHireDate2);
+            }
+            if(employeeJobDesc !=null && employeeJobDesc !="")
+            {
+                list = list.Where(m => m.jobs.job_desc == employeeJobDesc);
+            }
+            if(employeePublisherName != null && employeePublisherName != "")
+            {
+                list = list.Where(m => m.publishers.pub_name == employeePublisherName);
+            }
+            return View(list.ToList());
         }
 
         // GET: employees/Details/5

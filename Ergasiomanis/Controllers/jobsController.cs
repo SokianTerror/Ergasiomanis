@@ -23,46 +23,35 @@ namespace Ergasiomanis.Controllers
             string jobId = Request.QueryString["jobId"];
             string minlvl = Request.QueryString["minlvl"];
             string maxlvl = Request.QueryString["maxlvl"];
-            string jobDesc = Request.QueryString["jobDesc"];
-            string showEmployees = Request.QueryString["showEmployees"];
+            string jobDesc = Request.QueryString["jobDesc"];            
             if (jobId != null && jobId != "")
             {
                 short jobId2 = Convert.ToInt16(jobId);
-                list = list.Where(m => m.job_id == jobId2);
-                return View(list.ToList());
+                list = list.Where(m => m.job_id == jobId2);                
             }
             if(jobDesc != null && jobDesc.Trim() != "")
             {
                 jobDesc = jobDesc.Trim();
-                list = list.Where(m => m.job_desc.Contains(jobDesc));
-                return View(list.ToList());
+                list = list.Where(m => m.job_desc.Contains(jobDesc));                
             }
             if (minlvl != null && minlvl != "" && (maxlvl == null || maxlvl == ""))
             {
                 byte minlvl2 = Convert.ToByte(minlvl);
-                list = list.Where(m => m.min_lvl >= minlvl2);
-                return View(list.ToList());
+                list = list.Where(m => m.min_lvl >= minlvl2);               
             }
             if (maxlvl != null && maxlvl != "" && (minlvl == null || minlvl == ""))
             {
                 byte maxlvl2 = Convert.ToByte(maxlvl);
-                list = list.Where(m => m.max_lvl <= maxlvl2);
-                return View(list.ToList());
+                list = list.Where(m => m.max_lvl <= maxlvl2);                
             }
             if (maxlvl != null && maxlvl != "" && minlvl != null && minlvl != "")
             {
                 byte minlvl2 = Convert.ToByte(minlvl);
                 byte maxlvl2 = Convert.ToByte(maxlvl);
                 list = list.Where(m => m.min_lvl >= minlvl2);
-                list = list.Where(m => m.max_lvl <= maxlvl2);
-                return View(list.ToList());
-            }
-            if(showEmployees == "on")
-            {
-
-            }
-           
-            return View(db.jobs.ToList());
+                list = list.Where(m => m.max_lvl <= maxlvl2);                
+            }          
+            return View(list.ToList());
 
         }
 

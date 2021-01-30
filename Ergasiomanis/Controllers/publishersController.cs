@@ -21,7 +21,7 @@ namespace Ergasiomanis.Controllers
             List<publishers> pubList = db.publishers.ToList();
             ViewBag.publishers = pubList;
             var publishers = db.publishers.Include(p => p.pub_info);
-            return View(publishers.ToList());
+            return View(publishers);
         }
 
         // GET: publishers/Details/5
@@ -58,6 +58,7 @@ namespace Ergasiomanis.Controllers
             {
                 return HttpNotFound();
             }
+            
             return File(publisher.pub_info.logo, "image/png");
         }
 
@@ -66,7 +67,7 @@ namespace Ergasiomanis.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers, [Bind(Include = "pub_id,logo,pr_info")] pub_info pub_info)
+        public ActionResult Create([Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers, [Bind(Include = "pub_id,pr_info")] pub_info pub_info)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +77,6 @@ namespace Ergasiomanis.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
             return View(publishers);
         }
@@ -93,8 +93,7 @@ namespace Ergasiomanis.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
-            return View(publishers);
+            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);            return View(publishers);
         }
 
         // POST: publishers/Edit/5
@@ -104,6 +103,7 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "pub_id,logo,pr_info")] pub_info pub_info, [Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers )
         {
+             
             if (ModelState.IsValid)
             {
                 db.Entry(publishers).State = EntityState.Modified;

@@ -54,7 +54,10 @@
         </dt>
         
         <dd>
-            <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= Model.pub_id })>
+            @if (Model.pub_info != null && Model.pub_info.logo != null)
+            {
+                <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= Model.pub_id })>
+            }
         </dd>
 
     </dl>

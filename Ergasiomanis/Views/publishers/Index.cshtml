@@ -52,9 +52,8 @@
     <td>
         @if (item.pub_info != null && item.pub_info.logo != null)
         {
-        <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= item.pub_id })>
-
-    }
+        <img class="img-responsive" src=@Url.Action("logo","Publishers", new {id= item.pub_id })>
+        }
     </td>
 
     <td>

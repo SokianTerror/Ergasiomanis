@@ -58,7 +58,11 @@
     <div class="form-group">
         @Html.LabelFor(model => model.pub_info.logo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= Model.pub_id })>
+            @if (Model.pub_info != null && Model.pub_info.logo != null)
+            {
+                <img class="img-responsive" src=@Url.Action("Logo","Publishers", new {id= Model.pub_id })>
+            }
+
         </div>
     </div>
 

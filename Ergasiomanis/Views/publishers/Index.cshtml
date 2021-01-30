@@ -3,7 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<h2>Search</h2>
+<form>
+    <table class="table">
+        <tr><td>Publisher Name</td><td>City</td><td>State</td><td>Country</td><td>Publisher Info</td></tr>
+        <tr><td><input type="text" id="publisherName" name="publisherName"/></td><td><input type="text" id="publisherCity" name="publisherCity"/></td>
+        <td><input type="text" id="publisherState" name="publisherState"/></td><td><input type="text" id="publisherCountry" name="publisherCountry"/></td>
+        <td><input type="text" id="publisherInfo" name="publisherInfo"/></td></tr>
+        <tr><td><button type="submit">Search</button><button type="reset">Reset</button></td></tr>
+    </table>
+</form>
 <h2>Index</h2>
 
 <p>

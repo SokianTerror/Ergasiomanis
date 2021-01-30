@@ -52,4 +52,10 @@ namespace Ergasiomanis.Models
     public partial class publishers 
     { 
     }
+
+    [MetadataType(typeof(pub_infoMetadata))]
+    public partial class pub_info
+    {
+
+    }
 }

@@ -18,7 +18,49 @@ namespace Ergasiomanis.Controllers
         // GET: authors
         public ActionResult Index()
         {
-            return View(db.authors.ToList());
+            IQueryable<authors> list = db.authors;
+            string authorLastName = Request.QueryString["authorLastName"];
+            string authorFirstName = Request.QueryString["authorFirstName"];
+            string authorPhone = Request.QueryString["authorPhone"];
+            string authorAddress = Request.QueryString["authorAddress"];
+            string authorCity = Request.QueryString["authorCity"];
+            string authorState = Request.QueryString["authorState"];
+            string authorZip = Request.QueryString["authorZip"];
+            string authorContract = Request.QueryString["authorContract"];
+            if(authorLastName != null && authorLastName != "")
+            {
+                list = list.Where(m => m.au_lname == authorLastName);
+            }
+            if(authorFirstName != null && authorFirstName != "")
+            {
+                list = list.Where(m => m.au_fname == authorFirstName);
+            }
+            if(authorPhone != null && authorPhone != "")
+            {
+                list = list.Where(m => m.phone == authorPhone);
+            }
+            if(authorAddress != null && authorAddress != "")
+            {
+                list = list.Where(m => m.address == authorAddress);
+            }
+            if(authorCity != null && authorCity != "")
+            {
+                list = list.Where(m => m.city == authorCity);
+            }
+            if(authorState != null && authorState != "")
+            {
+                list = list.Where(m => m.state == authorState);
+            }
+            if(authorZip != null && authorZip != "")
+            {
+                list = list.Where(m => m.zip == authorZip);
+            }
+            if(authorContract == "on")
+            {
+                list = list.Where(m => m.contract == true);
+            }            
+
+            return View(list.ToList());;
         }
 
         // GET: authors/Details/5

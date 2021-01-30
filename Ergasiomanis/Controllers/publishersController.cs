@@ -18,10 +18,38 @@ namespace Ergasiomanis.Controllers
         // GET: publishers
         public ActionResult Index()
         {
-            List<publishers> pubList = db.publishers.ToList();
-            ViewBag.publishers = pubList;
-            var publishers = db.publishers.Include(p => p.pub_info);
-            return View(publishers);
+            // List<publishers> pubList = db.publishers.ToList();
+            //ViewBag.publishers = pubList;
+            //var publishers = db.publishers.Include(p => p.pub_info);
+            IQueryable<publishers> list = db.publishers.Include(p => p.pub_info);
+            string publisherName = Request.QueryString["publisherName"];
+            string publisherCity = Request.QueryString["publisherCity"];
+            string publisherState = Request.QueryString["publisherState"];
+            string publisherCountry = Request.QueryString["publisherCountry"];
+            string publisherInfo = Request.QueryString["publisherInfo"];
+            
+            if(publisherName != null && publisherName != "")
+            {
+                list = list.Where(m => m.pub_name == publisherName);
+            }
+            if(publisherCity !=null && publisherCity != "")
+            {
+                list = list.Where(m => m.city == publisherCity);
+            }
+            if(publisherState != null && publisherState != "")
+            {
+                list = list.Where(m => m.state == publisherState);
+            }
+            if(publisherCountry != null && publisherCountry != "")
+            {
+                list = list.Where(m => m.country == publisherCountry);
+            }
+            if (publisherInfo != null &&publisherInfo != "")
+            {
+                list = list.Where(m => m.pub_info.pr_info.Contains(publisherInfo));
+            }
+
+            return View(list.ToList());
         }
 
         // GET: publishers/Details/5

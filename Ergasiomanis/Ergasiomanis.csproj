@@ -177,6 +177,7 @@
     <Compile Include="Models\jobsMetadata.cs" />
     <Compile Include="Models\PartialClasses.cs" />
     <Compile Include="Models\publishersMetadata.cs" />
+    <Compile Include="Models\pub_infoMetadata.cs" />
     <Compile Include="Models\roychedsMetadata.cs" />
     <Compile Include="Models\salesMetadata.cs" />
     <Compile Include="Models\storesMetadata.cs" />

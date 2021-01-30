@@ -18,6 +18,8 @@ namespace Ergasiomanis.Models
         [StringLength(20, ErrorMessage = "First Name should not exceed 20 characters!")]
         public string fname;
 
+        [Display(Name = "Minit")]
+        [StringLength(1, MinimumLength = 1, ErrorMessage = "Minit must be 1 character!")]
         public string minit;
 
         [Display(Name = "Last Name")]

@@ -23,7 +23,7 @@ body
 }
 
 .buttona {
-    display:block;
+    display:inline-block;
     height:27px;
     width:100px;
     background-color: white;

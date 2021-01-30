@@ -23,11 +23,12 @@ body
 }
 
 .buttona {
-    background: #fff;
+    display:block;
+    height:27px;
+    width:100px;
+    background-color: white;
     border-radius: 9px;
     border-color: #e7e7e7;
-    height: 27px;
-    width: 100px;
 }
 
 .menu-bar{

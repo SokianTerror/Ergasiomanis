@@ -11,6 +11,11 @@ using Ergasiomanis.Models;
 
 namespace Ergasiomanis.Controllers
 {
+    public static class pubgl
+    {
+        public static string mes { get; set; }
+        public static bool qu { get; set; }
+    }
     public class publishersController : Controller
     {
         private pubsEntities db = new pubsEntities();
@@ -49,6 +54,9 @@ namespace Ergasiomanis.Controllers
                 list = list.Where(m => m.pub_info.pr_info.Contains(publisherInfo));
             }
 
+            ViewBag.Message = pubgl.mes;
+            ViewBag.ar = pubgl.qu;
+            pubgl.qu = false;
             return View(list.ToList());
         }
 
@@ -121,7 +129,8 @@ namespace Ergasiomanis.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);            return View(publishers);
+            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
+            return View(publishers);
         }
 
         // POST: publishers/Edit/5
@@ -131,7 +140,6 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "pub_id,logo,pr_info")] pub_info pub_info, [Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers )
         {
-             
             if (ModelState.IsValid)
             {
                 db.Entry(publishers).State = EntityState.Modified;
@@ -165,6 +173,8 @@ namespace Ergasiomanis.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             try {
+                pubgl.mes = "Succesfull delete";
+                pubgl.qu = true;
                 publishers publishers = db.publishers.Find(id);
                 foreach (pub_info egg in db.pub_info.Where(x => x.pub_id == id))
                 {
@@ -201,6 +211,8 @@ namespace Ergasiomanis.Controllers
                 return RedirectToAction("Index");
             } catch(Exception e)
             {
+                pubgl.mes = "Unsuccesfull delete";
+                pubgl.qu = true;
                 return RedirectToAction("Index");
             }
             }

@@ -7,9 +7,13 @@
 <form>
     <table class="table">
         <tr><td>Publisher Name</td><td>City</td><td>State</td><td>Country</td><td>Publisher Info</td></tr>
-        <tr><td><input type="text" id="publisherName" name="publisherName"/></td><td><input type="text" id="publisherCity" name="publisherCity"/></td>
-        <td><input type="text" id="publisherState" name="publisherState"/></td><td><input type="text" id="publisherCountry" name="publisherCountry"/></td>
-        <td><input type="text" id="publisherInfo" name="publisherInfo"/></td></tr>
+        <tr>
+            <td><input type="text" id="publisherName" name="publisherName" /></td>
+            <td><input type="text" id="publisherCity" name="publisherCity" /></td>
+            <td><input type="text" id="publisherState" name="publisherState" /></td>
+            <td><input type="text" id="publisherCountry" name="publisherCountry" /></td>
+            <td><input type="text" id="publisherInfo" name="publisherInfo" /></td>
+        </tr>
         <tr><td><button type="submit">Search</button><button type="reset">Reset</button></td></tr>
     </table>
 </form>
@@ -18,6 +22,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@if (ViewBag.ar)
+{
+
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        }
+    </script>
+}
 <table class="table">
     <tr>
         <th>
@@ -41,36 +54,37 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.pub_name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.city)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.state)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.country)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.pub_info.pr_info)
-    </td>
-    <td>
-        @if (item.pub_info != null && item.pub_info.logo != null)
-        {
-        <img class="img-responsive" src=@Url.Action("logo","Publishers", new {id= item.pub_id })>
-        }
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pub_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pub_info.pr_info)
+            </td>
+            <td>
+                @if (item.pub_info != null && item.pub_info.logo != null)
+                {
+                    <img class="img-responsive" src=@Url.Action("logo","Publishers", new {id= item.pub_id })>
+                }
+            </td>
 
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.pub_id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.pub_id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.pub_id })
-    </td>
-</tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.pub_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.pub_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.pub_id })
+            </td>
+        </tr>
+    }
 
 </table>

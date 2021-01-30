@@ -10,7 +10,14 @@ using Ergasiomanis;
 using Ergasiomanis.Models;
 
 namespace Ergasiomanis.Controllers
+
 {
+    public static class titlegl
+    {
+        public static string mes { get; set; }
+        public static bool qu { get; set; }
+    }
+
     public class titlesController : Controller
     {
         private pubsEntities db = new pubsEntities();
@@ -18,6 +25,9 @@ namespace Ergasiomanis.Controllers
         // GET: titles
         public ActionResult Index()
         {
+            ViewBag.Message = titlegl.mes;
+            ViewBag.ar = titlegl.qu;
+            titlegl.qu = false;
             var titles = db.titles.Include(t => t.publishers).Include(t => t.roysched);
             return View(titles.ToList());
         }
@@ -102,6 +112,7 @@ namespace Ergasiomanis.Controllers
         // GET: titles/Delete/5
         public ActionResult Delete(string id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -121,6 +132,9 @@ namespace Ergasiomanis.Controllers
         {
             try
             {
+                titlegl.mes = "Η διαγραφη ολοκληρωθηκε";
+                titlegl.qu = true;
+                ViewBag.message = "k";
                 titles titles = db.titles.Find(id);
                 foreach (titleauthor egg in db.titleauthor.Where(x => x.title_id == id))
                 {
@@ -144,6 +158,8 @@ namespace Ergasiomanis.Controllers
             }
             catch(Exception e)
             {
+                titlegl.qu = true;
+                titlegl.mes = "Η διαγραφη δεν ολοκληρωθηκε.";
                 return RedirectToAction("Index");
             }
         }

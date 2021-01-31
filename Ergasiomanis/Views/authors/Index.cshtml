@@ -7,12 +7,17 @@
 <h2>Search</h2>
 <form>
     <table class="table">
-        <tr><td>Last Name</td><td>First Name</td><td>Phone</td><td>Address</td><td>City</td><td>State</td><td>Zip</td><td>Contract</td></tr>
-        <tr><td><input type="text" id="authorLastName" name="authorLastName"/></td><td><input type="text" id="authorFirstName" name="authorFirstName"/></td>
+        <tr><td>Author Id</td><td>Last Name</td><td>First Name</td><td>Phone</td><td>Address</td><td>City</td><td>State</td></tr>
+        <tr><td><input type="text" id="authorId" name="authorId"/></td>
+        <td><input type="text" id="authorLastName" name="authorLastName"/></td><td><input type="text" id="authorFirstName" name="authorFirstName"/></td>
         <td><input type="text" id="authorPhone" name="authorPhone"/></td><td><input type="text" id="authorAddress" name="authorAddress"/></td>
         <td><input type="text" id="authorCity" name="authorCity"/></td><td><input type="text" id="authorState" name="authorState"/></td>
-        <td><input type="text" id="authorZip" name="authorZip"/></td><td><input type="checkbox" id="authorContract" name="authorContract"/></td></tr>
-        <tr><td ><button type="submit" style="background: #fff; border-radius: 9px; border-width: 1px; border-color: black; height: 25px; width: 80px;">Search</button>     <button style="width: 80px; background: #fff; border-radius: 9px; border-width: 1px; border-color: black; height: 25px;"  type="reset">Reset</button></td></tr>
+        </tr>
+        <tr><td>Zip</td><td>Contract</td></tr><tr><td><input type="text" id="authorZip" name="authorZip" /></td>
+    <td><input type="checkbox" id="authorContract" name="authorContract" /></td>
+</tr>
+        <tr><td ><button type="submit" style="background: #fff; border-radius: 9px; border-width: 1px; border-color: black; height: 25px; width: 80px;">Search</button>     <button style="width: 80px; background: #fff; border-radius: 9px; border-width: 1px; border-color: black; height: 25px;"  type="reset">Reset</button></td>
+            
     </table>
 
 </form>
@@ -24,6 +29,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.au_id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.au_lname)
         </th>
@@ -52,37 +60,40 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.au_lname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.au_fname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.state)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.zip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contract)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.au_id } ,new { @class = "glyphicon glyphicon-pencil"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.au_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.au_id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.au_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.au_lname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.au_fname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.city)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.state)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.zip)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.contract)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.au_id }, new { @class = "glyphicon glyphicon-pencil" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.au_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.au_id })
+    </td>
+</tr>
 }
 
 </table>

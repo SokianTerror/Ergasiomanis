@@ -18,7 +18,44 @@ namespace Ergasiomanis.Controllers
         // GET: stores
         public ActionResult Index()
         {
-            return View(db.stores.ToList());
+            IQueryable<stores> list = db.stores;
+            string StoreName = Request.QueryString["StoreName"];
+            string StoreAddress = Request.QueryString["StoreAddress"];
+            string StoreCity = Request.QueryString["StoreCity"];
+            string StoreState = Request.QueryString["StoreState"];
+            string StoreZip = Request.QueryString["StoreZip"];
+            string StoreId = Request.QueryString["StoreId"];
+            if(StoreId != null && StoreId != "")
+            {
+                StoreId = StoreId.Trim();
+                list = list.Where(m => m.stor_id.Contains(StoreId));
+            }
+            if(StoreName != null && StoreName != "")
+            {
+                StoreName = StoreName.Trim();
+                list = list.Where(m => m.stor_name.Contains(StoreName));
+            }
+            if(StoreAddress != null && StoreAddress != "")
+            {
+                StoreAddress = StoreAddress.Trim();
+                list = list.Where(m => m.stor_address.Contains(StoreAddress));
+            }
+            if(StoreCity != null && StoreCity != "")
+            {
+                StoreCity = StoreAddress.Trim();
+                list = list.Where(m => m.city.Contains(StoreCity));
+            }
+            if(StoreState != null && StoreState != "")
+            {
+                StoreState = StoreState.Trim();
+                list = list.Where(m => m.state.Contains(StoreState));
+            }
+            if (StoreZip != null && StoreZip != "")
+            {
+                StoreZip = StoreZip.Trim();
+                list = list.Where(m => m.zip.Contains(StoreZip));
+            }
+            return View(list.ToList());
         }
 
         // GET: stores/Details/5

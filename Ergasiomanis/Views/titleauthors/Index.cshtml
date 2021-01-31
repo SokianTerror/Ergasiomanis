@@ -6,10 +6,14 @@
 <h2>Search</h2>
 <form>
     <table class="table">
-        <tr><td>From Author Order</td><td>To Author Order</td><td>From Royalty per Book</td><td>To Royalty per Book</td><td>Last Name</td><td>Title</td></tr>
-        <tr><td><input type="number" id="FromAuthorOrder" name="FromAuthorOrder"/></td><td><input type="number" id="ToAuthorOrder" name="ToAuthorOrder"/></td>
-        <td><input type="number" id="FromRpB" name="FromRpB"/></td><td><input type="number" id="ToRpB" name="ToRpb"/></td><td><input type="text" id="LastName" name="LastName"/></td>
-        <td><input type="text" id="Title" name="Title"/></td></tr>
+        <tr><td>Author Id</td><td>Title Id</td><td>From Author Order</td><td>To Author Order</td><td>From Royalty per Book</td><td>To Royalty per Book</td></tr>
+        <tr><td><input type="text" id="authorId" name="authorId"/></td><td><input type="text" id="titleId" name="titleId"/></td><td><input type="number" id="FromAuthorOrder" name="FromAuthorOrder"/></td><td><input type="number" id="ToAuthorOrder" name="ToAuthorOrder"/></td>
+        <td><input type="number" id="FromRpB" name="FromRpB"/></td><td><input type="number" id="ToRpB" name="ToRpb"/></td></tr>
+        <tr><td>Last Name</td><td>Title</td></tr>
+        <tr>
+            <td><input type="text" id="LastName" name="LastName" /></td>
+            <td><input type="text" id="Title" name="Title" /></td>
+        </tr>
         <tr><td><button type="submit" style="background: #fff; border-radius: 9px; border-width: 1px; border-color: black; height: 25px; width: 80px;">Search</button>   <button type="reset" style="width: 80px; background: #fff; border-radius: 9px; border-width: 1px; border-color: black; height: 25px;">Reset</button></td></tr>
     </table>
 </form>
@@ -20,6 +24,12 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.au_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title_id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.au_ord)
         </th>
@@ -36,25 +46,31 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.au_ord)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.royaltyper)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.authors.au_lname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titles.title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id1=item.au_id, id2=item.title_id  }) |
-            @Html.ActionLink("Details", "Details", new { id1 = item.au_id, id2 = item.title_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id1 = item.au_id, id2 = item.title_id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.au_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.title_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.au_ord)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.royaltyper)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.authors.au_lname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.titles.title)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id1 = item.au_id, id2 = item.title_id }) |
+        @Html.ActionLink("Details", "Details", new { id1 = item.au_id, id2 = item.title_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id1 = item.au_id, id2 = item.title_id })
+    </td>
+</tr>
 }
 
 </table>

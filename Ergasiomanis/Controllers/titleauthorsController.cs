@@ -26,7 +26,18 @@ namespace Ergasiomanis.Controllers
             string ToRpB = Request.QueryString["ToRpB"];
             string LastName = Request.QueryString["LastName"];
             string Title = Request.QueryString["Title"];
-
+            string authorId = Request.QueryString["authorId"];
+            string titleId = Request.QueryString["titleId"];
+            if(authorId != null && authorId !="")
+            {
+                authorId = authorId.Trim();
+                list = list.Where(m => m.au_id.Contains(authorId));
+            }
+            if(titleId != null && titleId !="")
+            {
+                titleId = titleId.Trim();
+                list = list.Where(m => m.title_id.Contains(titleId));
+            }
             if(FromAuthorOrder != null && FromAuthorOrder != "")
             {
                 byte FromAuthorOrder2 = Convert.ToByte(FromAuthorOrder);

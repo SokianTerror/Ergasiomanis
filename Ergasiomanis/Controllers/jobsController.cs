@@ -21,8 +21,10 @@ namespace Ergasiomanis.Controllers
             IQueryable<jobs> list = db.jobs;
 
             string jobId = Request.QueryString["jobId"];
-            string minlvl = Request.QueryString["minlvl"];
-            string maxlvl = Request.QueryString["maxlvl"];
+            string FromMinlvl = Request.QueryString["FromMinlvl"];
+            string ToMinlvl = Request.QueryString["ToMinlvl"];
+            string FromMaxlvl = Request.QueryString["FromMaxlvl"];
+            string ToMaxlvl = Request.QueryString["ToMaxlvl"];
             string jobDesc = Request.QueryString["jobDesc"];            
             if (jobId != null && jobId != "")
             {
@@ -34,23 +36,26 @@ namespace Ergasiomanis.Controllers
                 jobDesc = jobDesc.Trim();
                 list = list.Where(m => m.job_desc.Contains(jobDesc));                
             }
-            if (minlvl != null && minlvl != "" && (maxlvl == null || maxlvl == ""))
+            if(FromMinlvl != null && FromMinlvl != "")
             {
-                byte minlvl2 = Convert.ToByte(minlvl);
-                list = list.Where(m => m.min_lvl >= minlvl2);               
+                byte FromMinlvl2 = Convert.ToByte(FromMinlvl);
+                list = list.Where(m => m.min_lvl >= FromMinlvl2);
             }
-            if (maxlvl != null && maxlvl != "" && (minlvl == null || minlvl == ""))
+            if(ToMinlvl != null && ToMinlvl != "")
             {
-                byte maxlvl2 = Convert.ToByte(maxlvl);
-                list = list.Where(m => m.max_lvl <= maxlvl2);                
+                byte ToMinlvl2 = Convert.ToByte(ToMinlvl);
+                list = list.Where(m => m.min_lvl <= ToMinlvl2);
             }
-            if (maxlvl != null && maxlvl != "" && minlvl != null && minlvl != "")
+            if(FromMaxlvl != null && FromMaxlvl != "")
             {
-                byte minlvl2 = Convert.ToByte(minlvl);
-                byte maxlvl2 = Convert.ToByte(maxlvl);
-                list = list.Where(m => m.min_lvl >= minlvl2);
-                list = list.Where(m => m.max_lvl <= maxlvl2);                
-            }          
+                byte FromMaxlvl2 = Convert.ToByte(FromMaxlvl);
+                list = list.Where(m => m.max_lvl >= FromMaxlvl2);
+            }
+            if(ToMaxlvl != null && ToMaxlvl !="")
+            {
+                byte ToMaxlvl2 = Convert.ToByte(ToMaxlvl);
+                list = list.Where(m => m.max_lvl <= ToMaxlvl2);
+            }      
             return View(list.ToList());
 
         }

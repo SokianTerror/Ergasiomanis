@@ -46,7 +46,12 @@ namespace Ergasiomanis.Controllers
             string publisherState = Request.QueryString["publisherState"];
             string publisherCountry = Request.QueryString["publisherCountry"];
             string publisherInfo = Request.QueryString["publisherInfo"];
-            
+            string publisherId = Request.QueryString["publisherId"];
+            if(publisherId != null && publisherId != "")
+            {
+                publisherId = publisherId.Trim();
+                list = list.Where(m => m.pub_id.Contains(publisherId));
+            }
             if(publisherName != null && publisherName != "")
             {
                 publisherName = publisherName.Trim();

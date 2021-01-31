@@ -27,32 +27,45 @@ namespace Ergasiomanis.Controllers
             string authorState = Request.QueryString["authorState"];
             string authorZip = Request.QueryString["authorZip"];
             string authorContract = Request.QueryString["authorContract"];
+            string authorId = Request.QueryString["authorId"];
+            if(authorId != null && authorId !="")
+            {
+                authorId = authorId.Trim();
+                list = list.Where(m => m.au_id.Contains(authorId));
+            }
             if(authorLastName != null && authorLastName != "")
             {
+                authorLastName = authorLastName.Trim();
                 list = list.Where(m => m.au_lname.Contains(authorLastName));
             }
             if(authorFirstName != null && authorFirstName != "")
             {
+                authorFirstName = authorFirstName.Trim();
                 list = list.Where(m => m.au_fname.Contains(authorFirstName));
             }
             if(authorPhone != null && authorPhone != "")
             {
+                authorPhone = authorPhone.Trim();
                 list = list.Where(m => m.phone.Contains(authorPhone));
             }
             if(authorAddress != null && authorAddress != "")
             {
+                authorAddress = authorAddress.Trim();
                 list = list.Where(m => m.address.Contains(authorAddress));
             }
             if(authorCity != null && authorCity != "")
             {
+                authorCity = authorCity.Trim();
                 list = list.Where(m => m.city.Contains(authorCity));
             }
             if(authorState != null && authorState != "")
             {
+                authorState = authorState.Trim();
                 list = list.Where(m => m.state.Contains(authorState));
             }
             if(authorZip != null && authorZip != "")
             {
+                authorZip = authorZip.Trim();
                 list = list.Where(m => m.zip.Contains(authorZip));
             }
             if(authorContract == "on")

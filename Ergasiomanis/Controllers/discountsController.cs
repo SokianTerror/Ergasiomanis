@@ -18,8 +18,51 @@ namespace Ergasiomanis.Controllers
         // GET: discounts
         public ActionResult Index()
         {
-            var discounts = db.discounts.Include(d => d.stores);
-            return View(discounts.ToList());
+            //var discounts = db.discounts.Include(d => d.stores);
+            IQueryable<discounts> list = db.discounts.Include(d => d.stores);
+            string FromLowQuantity = Request.QueryString["FromLowQuantity"];
+            string ToLowQuantity = Request.QueryString["ToLowQuantity"];
+            string FromHighQuantity = Request.QueryString["FromHighQuantity"];
+            string ToHighQuantity = Request.QueryString["ToHighQuantity"];
+            string StoreName = Request.QueryString["StoreName"];
+            string FromDiscount = Request.QueryString["FromDiscount"];
+            string ToDiscount = Request.QueryString["ToDiscount"];
+            if(FromLowQuantity != null && FromLowQuantity != "")
+            {
+                short FromLowQuantity2 = Convert.ToInt16(FromLowQuantity);
+                list = list.Where(m => m.lowqty >= FromLowQuantity2) ;
+            }
+            if (ToLowQuantity != null && ToLowQuantity != "")
+            {
+                short ToLowQuantity2 = Convert.ToInt16(ToLowQuantity);
+                list = list.Where(m => m.lowqty <= ToLowQuantity2);
+            }
+            if (FromHighQuantity != null && FromHighQuantity != "")
+            {
+                short FromHighQuantity2 = Convert.ToInt16(FromHighQuantity);
+                list = list.Where(m => m.lowqty >= FromHighQuantity2);
+            }
+            if (ToHighQuantity != null && ToHighQuantity != "")
+            {
+                short ToHighQuantity2 = Convert.ToInt16(ToHighQuantity);
+                list = list.Where(m => m.lowqty >= ToHighQuantity2);
+            }
+            if(StoreName != null && StoreName != "")
+            {
+                StoreName = StoreName.Trim();
+                list = list.Where(m => m.stores.stor_name.Contains(StoreName));
+            }
+            if(FromDiscount != null && FromDiscount != "")
+            {
+                decimal FromDiscount2 = Convert.ToDecimal("FromDiscount");
+                list = list.Where(m => m.discount >= FromDiscount2);
+            }
+            if (ToDiscount != null && ToDiscount != "")
+            {
+                decimal ToDiscount2 = Convert.ToDecimal("ToDiscount");
+                list = list.Where(m => m.discount >= ToDiscount2);
+            }
+            return View(list.ToList());
         }
 
         // GET: discounts/Details/5

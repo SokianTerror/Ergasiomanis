@@ -18,8 +18,47 @@ namespace Ergasiomanis.Controllers
         // GET: titleauthors
         public ActionResult Index()
         {
-            var titleauthor = db.titleauthor.Include(t => t.authors).Include(t => t.titles);
-            return View(titleauthor.ToList());
+            //var titleauthor = db.titleauthor.Include(t => t.authors).Include(t => t.titles);
+            IQueryable<titleauthor> list = db.titleauthor.Include(t => t.authors).Include(t => t.titles);
+            string FromAuthorOrder = Request.QueryString["FromAuthorOrder"];
+            string ToAuthorOrder = Request.QueryString["ToAuthorOrder"];
+            string FromRpB = Request.QueryString["FromRpB"];
+            string ToRpB = Request.QueryString["ToRpB"];
+            string LastName = Request.QueryString["LastName"];
+            string Title = Request.QueryString["Title"];
+
+            if(FromAuthorOrder != null && FromAuthorOrder != "")
+            {
+                byte FromAuthorOrder2 = Convert.ToByte(FromAuthorOrder);
+                list = list.Where(m => m.au_ord >= FromAuthorOrder2);
+            }
+            if(ToAuthorOrder != null && ToAuthorOrder != "")
+            {
+                byte ToAuthorOrder2 = Convert.ToByte(ToAuthorOrder);
+                list = list.Where(m => m.au_ord <= ToAuthorOrder2);
+            }
+            if(FromRpB != null && FromRpB!="")
+            {
+                int FromRpB2 = Convert.ToInt32(FromRpB);
+                list = list.Where(m => m.royaltyper >= FromRpB2);
+            }
+            if (ToRpB != null && ToRpB!="")
+            {
+                int ToRpB2 = Convert.ToInt32(ToRpB);
+                list = list.Where(m => m.royaltyper <= ToRpB2);
+            }
+            if(LastName != null && LastName != "")
+            {
+                LastName = LastName.Trim();
+                list = list.Where(m => m.authors.au_lname.Contains(LastName));
+            }
+            if(Title != null && Title !="")
+            {
+                Title = Title.Trim();
+                list = list.Where(m => m.titles.title.Contains(Title));
+            }
+
+            return View(list.ToList());
         }
 
         // GET: titleauthors/Details/5

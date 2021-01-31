@@ -28,8 +28,100 @@ namespace Ergasiomanis.Controllers
             ViewBag.Message = titlegl.mes;
             ViewBag.ar = titlegl.qu;
             titlegl.qu = false;
-            var titles = db.titles.Include(t => t.publishers).Include(t => t.roysched);
-            return View(titles.ToList());
+            //var titles = db.titles.Include(t => t.publishers).Include(t => t.roysched);
+            IQueryable<titles> list = db.titles.Include(t => t.publishers).Include(t => t.roysched);
+            string titlesTitle = Request.QueryString["titlesTitle"];
+            string titlesType = Request.QueryString["titlesType"];
+            string titlesFromPrice = Request.QueryString["titlesFromPrice"];
+            string titlesToPrice = Request.QueryString["titlesToPrice"];
+            string titlesFromAdvance = Request.QueryString["titlesFromAdvance"];
+            string titlesToAdvance = Request.QueryString["titlesToAdvance"];
+            string titlesFromRoyalty = Request.QueryString["titlesFromRoyalty"];
+            string titlesToRoyalty = Request.QueryString["titlesToRoyalty"];
+            string titlesFromTimesSold = Request.QueryString["titlesFromTimesSold"];
+            string titlesToTimesSold = Request.QueryString["titlesToTimesSold"];
+            string titlesNotes = Request.QueryString["titlesNotes"];
+            string titlesFromReleaseDate = Request.QueryString["titlesFromReleaseDate"];
+            string titlesToReleaseDate = Request.QueryString["titlesToReleaseDate"];
+            string titlesPublisherName = Request.QueryString["titlesPublisherName"];
+            string titlesTitleId = Request.QueryString["titlesTitleId"];
+
+            if(titlesTitle != null && titlesTitle !="")
+            {
+                titlesTitle = titlesTitle.Trim();
+                list = list.Where(m => m.title.Contains(titlesTitle));
+            }
+            if (titlesType != null && titlesType != "")
+            {
+                titlesType = titlesType.Trim();
+                list = list.Where(m => m.type.Contains(titlesType));
+            }
+            if(titlesFromPrice != null && titlesFromPrice !="")
+            {
+                decimal titlesFromPrice2 = Convert.ToDecimal(titlesFromPrice);
+                list = list.Where(m => m.price >= titlesFromPrice2);
+            }
+            if(titlesToPrice != null && titlesToPrice != "")
+            {
+                decimal titlesToPrice2 = Convert.ToDecimal(titlesToPrice);
+                list = list.Where(m => m.price <= titlesToPrice2);
+            }
+            if(titlesFromAdvance != null && titlesToAdvance != "")
+            {
+                decimal titlesFromAdvance2 = Convert.ToDecimal(titlesFromAdvance);
+                list = list.Where(m => m.advance >= titlesFromAdvance2);
+            }
+            if(titlesToAdvance != null && titlesToAdvance != "")
+            {
+                decimal titlesToAdvance2 = Convert.ToDecimal(titlesToAdvance);
+                list = list.Where(m => m.advance <= titlesToAdvance2);
+            }
+            if(titlesFromRoyalty != null && titlesFromRoyalty != "")
+            {
+                int titlesFromRoyalty2 = Convert.ToInt32(titlesFromRoyalty);
+                list = list.Where(m => m.royalty >= titlesFromRoyalty2);
+            }
+            if (titlesToRoyalty != null && titlesToRoyalty != "")
+            {
+                int titlesToRoyalty2 = Convert.ToInt32(titlesToRoyalty);
+                list = list.Where(m => m.royalty <= titlesToRoyalty2);
+            }
+            if(titlesFromTimesSold != null && titlesFromTimesSold != "")
+            {
+                int titlesFromTimesSold2 = Convert.ToInt32(titlesFromTimesSold);
+                list = list.Where(m => m.ytd_sales >= titlesFromTimesSold2);
+            }
+            if(titlesToTimesSold != null && titlesToTimesSold != "")
+            {
+                int titlesToTimesSold2 = Convert.ToInt32(titlesToTimesSold);
+                list = list.Where(m => m.ytd_sales <= titlesToTimesSold2);
+            }
+            if(titlesNotes != null && titlesNotes != "")
+            {
+                titlesNotes = titlesNotes.Trim();
+                list = list.Where(m => m.notes.Contains(titlesNotes));
+            }
+            if(titlesFromReleaseDate != null && titlesFromReleaseDate !="")
+            {
+                DateTime titlesFromReleaseDate2 = DateTime.Parse(titlesFromReleaseDate);
+                list = list.Where(m => m.pubdate >= titlesFromReleaseDate2);
+            }
+            if(titlesToReleaseDate != null && titlesToReleaseDate != "")
+            {
+                DateTime titlesToReleaseDate2 = DateTime.Parse(titlesToReleaseDate);
+                list = list.Where(m => m.pubdate <= titlesToReleaseDate2);
+            }
+            if(titlesPublisherName != null && titlesPublisherName != "")
+            {
+                titlesPublisherName = titlesPublisherName.Trim();
+                list = list.Where(m => m.publishers.pub_name.Contains(titlesPublisherName));
+            }
+            if(titlesTitleId != null && titlesTitleId != "")
+            {
+                titlesTitleId = titlesTitleId.Trim();
+                list = list.Where(m => m.title_id.Contains(titlesTitleId));
+            }
+            return View(list.ToList());
         }
 
         // GET: titles/Details/5

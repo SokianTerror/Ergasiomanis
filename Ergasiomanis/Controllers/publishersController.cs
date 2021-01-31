@@ -35,22 +35,27 @@ namespace Ergasiomanis.Controllers
             
             if(publisherName != null && publisherName != "")
             {
-                list = list.Where(m => m.pub_name == publisherName);
+                publisherName = publisherName.Trim();
+                list = list.Where(m => m.pub_name.Contains(publisherName));
             }
             if(publisherCity !=null && publisherCity != "")
             {
-                list = list.Where(m => m.city == publisherCity);
+                publisherCity = publisherCity.Trim();
+                list = list.Where(m => m.city.Contains(publisherCity));
             }
             if(publisherState != null && publisherState != "")
             {
-                list = list.Where(m => m.state == publisherState);
+                publisherState = publisherState.Trim();
+                list = list.Where(m => m.state.Contains(publisherState));
             }
             if(publisherCountry != null && publisherCountry != "")
             {
-                list = list.Where(m => m.country == publisherCountry);
+                publisherCountry = publisherCountry.Trim();
+                list = list.Where(m => m.country.Contains(publisherCountry));
             }
-            if (publisherInfo != null &&publisherInfo != "")
+            if (publisherInfo != null && publisherInfo != "")
             {
+                publisherInfo = publisherInfo.Trim();
                 list = list.Where(m => m.pub_info.pr_info.Contains(publisherInfo));
             }
 

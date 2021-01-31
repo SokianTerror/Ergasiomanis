@@ -3,6 +3,36 @@
 @{
     ViewBag.Title = "Index";
 }
+<h2>Search</h2>
+<form>
+    <table class="table">
+        <tr><td>Title</td><td>Type</td><td>From Price</td><td>To Price</td><td>From Advance</td><td>To Advance</td></tr>
+        <tr>
+            <td><input type="text" id="titlesTitle" name="titlesTitle" /></td>
+            <td><input type="text" id="titlesType" name="titlesType" /></td>
+            <td><input type="number" id="titlesFromPrice" name="titlesFromPrice" /></td>
+            <td><input type="number" id="titlesToPrice" name="titlesToPrice" /></td>
+            <td><input type="number" id="titlesFromAdvance" name="titlesFromAdvance" /></td>
+            <td><input type="number" id="titlesToAdvance" name="titlesToAdvance" /></td>
+        </tr>
+        <tr><td>From Royalty</td><td>To Royalty</td><td>From Times Sold</td><td>To Times Sold</td><td>Notes</td></tr>
+        <tr>
+            <td><input type="number" id="titlesFromRoyalty" name="titlesFromRoyalty" /></td>
+            <td><input type="number" id="titlesToRoyalty" name="titlesToRoyalty" /></td>
+            <td><input type="number" id="titlesFromTimesSold" name="titlesFromTimesSold" /></td>
+            <td><input type="number" id="titlesToTimesSold" name="titlesToTimesSold" /></td>
+            <td><input type="text" id="titlesNotes" name="titlesNotes" /></td>
+        </tr>
+        <tr><td>From Release Date</td><td>To Release Date</td>
+        <td>Publisher Name</td><td>Title Id</td></tr>
+        <tr>
+        <td><input type="date" id="titlesFromReleaseDate" name="titlesFromReleaseDate"/></td>
+        <td><input type="date" id="titlesToReleaseDate" name="titlesToReleaseDate" /></td><td><input type="text" id="titlesPublisherName" name="titlesPublisherName"/></td>
+        <td><input type="text" id="titlesTitleId" name="titlesTitleId"/></td>
+        </tr>
+        <tr><td><button type="submit">Search</button><button type="reset">Reset</button></td></tr>
+    </table>
+</form>
 
 <h2>Index</h2>
 

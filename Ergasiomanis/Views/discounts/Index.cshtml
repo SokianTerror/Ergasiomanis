@@ -3,7 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<h2>Search</h2>
+<form>
+    <table>
+        <tr><td>From Low Quantity</td><td>To Low Quantity</td><td>From High Quantity</td><td>To High Quantity</td><td>Store Name</td><td>From Discount</td><td>To Discount</td></tr>
+        <tr><td><input type="number" id="FromLowQuantity" name="FromLowQuantity"/></td><td><input type="number" id="ToLowQuantity" name="ToLowQuantity"/></td>
+        <td><input type="number" id="FromHighQuantity" name="FromHighQuantity"/></td><td><input type="number" id="ToHighQuantity" name="ToHighQuantity" /></td>
+        <td><input type="text" id="StoreName" name="StoreName"/></td><td><input type="number" id="FromDiscount" name="FromDiscount"/></td><td><input type="number" id="ToDiscount" name="ToDiscount"/></td></tr>
+    </table>
+</form>
 <h2>Index</h2>
 
 <table class="table">
@@ -17,24 +25,30 @@
         <th>
             @Html.DisplayNameFor(model => model.stores.stor_name)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discount)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.lowqty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.highqty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stores.stor_name)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id1 = item.discounttype, id2 = item.discount }) 
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.lowqty)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.highqty)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.stores.stor_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.discount)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id1 = item.discounttype, id2 = item.discount })
+    </td>
+</tr>
 }
 
 </table>

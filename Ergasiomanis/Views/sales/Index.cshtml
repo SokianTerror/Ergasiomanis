@@ -3,7 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<h2>Search</h2>
+<form>
+    <table class="table">
+        <tr><td>From Order Date</td><td>To Order Date</td><td>From Quantity</td><td>To Quantity</td><td>Payments Terms</td><td>Store Name</td><td>Title</td></tr>
+        <tr><td><input type="date" id="salesFromOrderDate" name="salesFromOrderDate"/></td><td><input type="date" id="salesToOrderDate" name="salesToOrderDate"/></td>
+        <td><input type="number" id="salesFromQuantity" name="salesFromQuantity"/></td><td><input type="number" id="salesToQuantity" name="salesToQuantity"/></td>
+        <td><input type="text" id="salesPaymentTerms" name="salesPaymentTerms"/></td><td><input type="text" id="salesStoreName" name="salesStoreName"/></td>
+        <td><input type="text" id="salesTitle" name="salesTitle"/></td></tr>
+        <tr><td><button type="submit">Search</button><button type="reset">Reset</button></td></tr>
+    </table>
+</form>
 <h2>Index</h2>
 
 <p>

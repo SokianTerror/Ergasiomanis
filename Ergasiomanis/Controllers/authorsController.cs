@@ -29,31 +29,31 @@ namespace Ergasiomanis.Controllers
             string authorContract = Request.QueryString["authorContract"];
             if(authorLastName != null && authorLastName != "")
             {
-                list = list.Where(m => m.au_lname == authorLastName);
+                list = list.Where(m => m.au_lname.Contains(authorLastName));
             }
             if(authorFirstName != null && authorFirstName != "")
             {
-                list = list.Where(m => m.au_fname == authorFirstName);
+                list = list.Where(m => m.au_fname.Contains(authorFirstName));
             }
             if(authorPhone != null && authorPhone != "")
             {
-                list = list.Where(m => m.phone == authorPhone);
+                list = list.Where(m => m.phone.Contains(authorPhone));
             }
             if(authorAddress != null && authorAddress != "")
             {
-                list = list.Where(m => m.address == authorAddress);
+                list = list.Where(m => m.address.Contains(authorAddress));
             }
             if(authorCity != null && authorCity != "")
             {
-                list = list.Where(m => m.city == authorCity);
+                list = list.Where(m => m.city.Contains(authorCity));
             }
             if(authorState != null && authorState != "")
             {
-                list = list.Where(m => m.state == authorState);
+                list = list.Where(m => m.state.Contains(authorState));
             }
             if(authorZip != null && authorZip != "")
             {
-                list = list.Where(m => m.zip == authorZip);
+                list = list.Where(m => m.zip.Contains(authorZip));
             }
             if(authorContract == "on")
             {

@@ -3,7 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<h2>Search</h2>
+<form>
+    <table class="table">
+        <tr><td>From Low Range</td><td>To Low Range</td><td>From High Range</td><td>To High Range</td><td>From Royalty</td><td>To Royalty</td></tr>
+        <tr><td><input type="number" id="FromLowRange" name="FromLowRange"/></td><td><input type="number" id="ToLowRange" name="ToLowRange"/></td>
+        <td><input type="number" id="FromHighRange" name="FromHighRange"/></td><td><input type="number" id="ToHighRange" name="ToHighRange"/></td>
+        <td><input type="number" id="FromRoyalty" name="FromRoyalty"/></td><td><input type="number" id="ToRoyalty" name="ToRoyalty"/></td>
+        </tr>
+        <tr><td><button type="submit">Search</button><button type="reset">Reset</button></td></tr>
+    </table>
+</form>
 <h2>Index</h2>
 
 <table class="table">
@@ -18,7 +28,7 @@
             @Html.DisplayNameFor(model => model.royalty)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.titles.title)
+            @Html.DisplayNameFor(model => model.title_id)
         </th>
         <th></th>
     </tr>

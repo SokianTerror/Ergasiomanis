@@ -20,7 +20,44 @@ namespace Ergasiomanis.Controllers
             
         {
             string qr = "select * from roysched";
-            IEnumerable<roysched> roysched = db.Database.SqlQuery<roysched>(qr);
+            IEnumerable<roysched> roysched = db.Database.SqlQuery<roysched>(qr);            
+            string FromLowRange = Request.QueryString["FromLowRange"];
+            string ToLowRange = Request.QueryString["ToLowRange"];
+            string FromHighRange = Request.QueryString["FromHighRange"];
+            string ToHighRange = Request.QueryString["ToHighRange"];
+            string FromRoyalty = Request.QueryString["FromRoyalty"];
+            string ToRoyalty = Request.QueryString["ToRoyalty"];            
+
+            if(FromLowRange!=null && FromLowRange != "")
+            {
+                int FromLowRange2 = Convert.ToInt32(FromLowRange);
+                roysched = roysched.Where(m => m.lorange >= FromLowRange2);
+            }
+            if(ToLowRange != null && ToLowRange != "")
+            {
+                int ToLowRange2 = Convert.ToInt32(ToLowRange);
+                roysched = roysched.Where(m => m.lorange <= ToLowRange2);
+            }
+            if(FromHighRange != null && FromHighRange != "")
+            {
+                int FromHighRange2 = Convert.ToInt32(FromHighRange);
+                roysched = roysched.Where(m => m.hirange >= FromHighRange2);
+            }
+            if(ToHighRange != null && ToHighRange != "")
+            {
+                int ToHighRange2 = Convert.ToInt32(ToHighRange);
+                roysched = roysched.Where(m => m.hirange <= ToHighRange2);
+            }
+            if(FromRoyalty != null && FromRoyalty !="")
+            {
+                int FromRoyalty2 = Convert.ToInt32(FromRoyalty);
+                roysched = roysched.Where(m => m.royalty >= FromRoyalty2);
+            }
+            if (ToRoyalty != null && ToRoyalty !="")
+            {
+                int ToRoyalty2 = Convert.ToInt32(ToRoyalty);
+                roysched = roysched.Where(m => m.royalty <= ToRoyalty2);
+            }            
             return View(roysched.ToList());
 
         }

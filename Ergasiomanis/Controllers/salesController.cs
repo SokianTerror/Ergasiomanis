@@ -18,8 +18,52 @@ namespace Ergasiomanis.Controllers
         // GET: sales
         public ActionResult Index()
         {
-            var sales = db.sales.Include(s => s.stores).Include(s => s.titles);
-            return View(sales.ToList());
+            //var sales = db.sales.Include(s => s.stores).Include(s => s.titles);
+            IQueryable<sales> list = db.sales.Include(s => s.stores).Include(s => s.titles);
+            string salesFromOrderDate = Request.QueryString["salesFromOrderDate"];
+            string salesToOrderDate = Request.QueryString["salesToOrderDate"];
+            string salesFromQuantity = Request.QueryString["salesFromQuantity"];
+            string salesToQuantity = Request.QueryString["salesToQuantity"];
+            string salesPaymentTerms = Request.QueryString["salesPaymentTerms"];
+            string salesStoreName = Request.QueryString["salesStoreName"];
+            string salesTitle = Request.QueryString["salesTitle"];
+
+            if(salesFromOrderDate !=null && salesFromOrderDate != "")
+            {
+                DateTime salesFromOrderDate2 = DateTime.Parse(salesFromOrderDate);
+                list = list.Where(m => m.ord_date >= salesFromOrderDate2);
+            }
+            if(salesToOrderDate != null && salesToOrderDate != "")
+            {
+                DateTime salesToOrderDate2 = DateTime.Parse(salesToOrderDate);
+                list = list.Where(m => m.ord_date <= salesToOrderDate2);
+            }
+            if(salesFromQuantity != null && salesFromQuantity != "")
+            {
+                short salesFromQuantity2 = Convert.ToInt16(salesFromQuantity);
+                list = list.Where(m => m.qty >= salesFromQuantity2);
+            }
+            if(salesToQuantity != null && salesToQuantity != "")
+            {
+                short salesToQuantity2 = Convert.ToInt16(salesToQuantity);
+                list = list.Where(m => m.qty <= salesToQuantity2);
+            }
+            if(salesPaymentTerms != null && salesPaymentTerms != "")
+            {
+                salesPaymentTerms = salesPaymentTerms.Trim();
+                list = list.Where(m => m.payterms.Contains(salesPaymentTerms));
+            }
+            if(salesStoreName != null && salesStoreName != "")
+            {
+                salesStoreName = salesStoreName.Trim();
+                list = list.Where(m => m.stores.stor_name.Contains(salesStoreName));
+            }
+            if(salesTitle != null && salesTitle != "")
+            {
+                salesTitle = salesTitle.Trim();
+                list = list.Where(m => m.titles.title.Contains(salesTitle));
+            }
+            return View(list.ToList());
         }
 
         // GET: sales/Details/5

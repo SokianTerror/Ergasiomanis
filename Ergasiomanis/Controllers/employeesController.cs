@@ -33,14 +33,17 @@ namespace Ergasiomanis.Controllers
 
             if(employeeLastName != null && employeeLastName != "")
             {
-                list = list.Where(m => m.lname == employeeLastName);
+                employeeLastName = employeeLastName.Trim();
+                list = list.Where(m => m.lname.Contains(employeeLastName));
             }
             if(employeeFirstName != null && employeeFirstName != "")
             {
-                list = list.Where(m => m.fname == employeeFirstName);
+                employeeFirstName = employeeFirstName.Trim();
+                list = list.Where(m => m.fname.Contains(employeeFirstName));
             }
             if(employeeMinit !=null && employeeMinit != "")
             {
+                employeeMinit = employeeMinit.Trim();
                 list = list.Where(m => m.minit == employeeMinit);
             }
             if(employeeFromJobLevel !=null && employeeFromJobLevel !="")
@@ -65,11 +68,13 @@ namespace Ergasiomanis.Controllers
             }
             if(employeeJobDesc !=null && employeeJobDesc !="")
             {
-                list = list.Where(m => m.jobs.job_desc == employeeJobDesc);
+                employeeJobDesc = employeeJobDesc.Trim();
+                list = list.Where(m => m.jobs.job_desc.Contains(employeeJobDesc));
             }
             if(employeePublisherName != null && employeePublisherName != "")
             {
-                list = list.Where(m => m.publishers.pub_name == employeePublisherName);
+                employeePublisherName = employeePublisherName.Trim();
+                list = list.Where(m => m.publishers.pub_name.Contains(employeePublisherName));
             }
             return View(list.ToList());
         }

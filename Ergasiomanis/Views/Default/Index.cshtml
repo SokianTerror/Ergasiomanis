@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Ergasiomanis.Models.jobs>
+
+<div>
+    @{
+        ViewBag.Title = "Index";
+    }
+    </hr>
+    <hr />
+</div>
+<h2>Search</h2>
+<form>
+    <table class="table">
+        <tr><td>Job Id</td><td>Job Desctiption</td><td>From Min Level</td><td>To Max Level</td></tr>
+        <tr><td><input type="number" id="jobId" name="jobId" /></td><td><input type="text" id="jobDesc" name="jobDesc" /></td><td><input type="number" id="minlvl" name="minlvl" /></td><td><input type="number" id="maxlvl" name="maxlvl" /></td></tr>
+        <tr><td><button type="submit">Search</button><button type="reset">Reset</button></td></tr>
+    </table>
+
+</form>
+<h2>Index</h2>

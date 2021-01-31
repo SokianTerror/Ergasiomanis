@@ -18,7 +18,7 @@ namespace Ergasiomanis.Models
         public string title_id { get; set; }
         public Nullable<byte> au_ord { get; set; }
         public Nullable<int> royaltyper { get; set; }
-            
+    
         public virtual authors authors { get; set; }
         public virtual titles titles { get; set; }
     }

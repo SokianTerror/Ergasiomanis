@@ -23,10 +23,24 @@ namespace Ergasiomanis.Controllers
         // GET: publishers
         public ActionResult Index()
         {
+          /*  int x = 5;
+            DateTime da = "1999/2/2 05:05:05";
+            DateTime dl = "1999/2/2 05:05:05";
+            var lista = db.titleauthor.Include(p => p.sales);
+            lista = lista.Where(k => k.sales.ord_date >= da).Where(k => k.sales.ord_date <= dl) ;
+            int sum = 0;
+            foreach(var item in lista)
+            {
+                sum += item.sales.qty;
+                if (sum > x)
+                {
+                    var name = lista.Where(p=>p.sales.)
+                }
+            }*/
             // List<publishers> pubList = db.publishers.ToList();
             //ViewBag.publishers = pubList;
             //var publishers = db.publishers.Include(p => p.pub_info);
-            IQueryable<publishers> list = db.publishers.Include(p => p.pub_info);
+            IQueryable <publishers> list = db.publishers.Include(p => p.pub_info);
             string publisherName = Request.QueryString["publisherName"];
             string publisherCity = Request.QueryString["publisherCity"];
             string publisherState = Request.QueryString["publisherState"];

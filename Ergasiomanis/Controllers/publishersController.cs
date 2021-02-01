@@ -235,7 +235,7 @@ namespace Ergasiomanis.Controllers
                 return RedirectToAction("Index");
             } catch(Exception e)
             {
-                pubgl.mes = "Unsuccesfull delete";
+                pubgl.mes = "Unsuccessfull delete";
                 pubgl.qu = true;
                 return RedirectToAction("Index");
             }

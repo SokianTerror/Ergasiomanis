@@ -6,10 +6,13 @@
 <h2>Search</h2>
 <form>
     <table class="table">
-        <tr><td>From Low Quantity</td><td>To Low Quantity</td><td>From High Quantity</td><td>To High Quantity</td><td>Store Name</td><td>From Discount</td><td>To Discount</td></tr>
-        <tr><td><input style="width:250px" type="number" id="FromLowQuantity" name="FromLowQuantity"/></td><td><input type="number" id="ToLowQuantity" name="ToLowQuantity"/></td>
+        <tr><td>Store Id</td><td>From Low Quantity</td><td>To Low Quantity</td><td>From High Quantity</td><td>To High Quantity</td><td>Store Name</td></tr>
+        <tr><td><input type="text" style="width:205px" id="storeId" name="storeId"/></td>
+        <td><input style="width:250px" type="number" id="FromLowQuantity" name="FromLowQuantity"/></td><td><input type="number" id="ToLowQuantity" name="ToLowQuantity"/></td>
         <td><input type="number" id="FromHighQuantity" name="FromHighQuantity"/></td><td><input type="number" id="ToHighQuantity" name="ToHighQuantity" /></td>
-        <td><input type="text" id="StoreName" name="StoreName"/></td><td><input type="number" id="FromDiscount" name="FromDiscount"/></td><td><input type="number" id="ToDiscount" name="ToDiscount"/></td></tr>
+        <td><input type="text" id="StoreName" name="StoreName"/></td></tr>
+        <tr><td>From Discount</td><td>To Discount</td></tr>
+        <tr><td><input type="number" style="width:205px" id="FromDiscount" name="FromDiscount" /></td><td><input type="number" style="width:205px" id="ToDiscount" name="ToDiscount" /></td></tr>
         <tr><td><button class="buttona" type="submit">Search</button>   <button class="buttona" type="reset">Reset</button></td></tr>
     </table>
 </form>
@@ -24,12 +27,14 @@
             @Html.DisplayNameFor(model => model.highqty)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.discount)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.stores.stor_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.discount)
+            @Html.DisplayNameFor(model => model.stor_id)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,10 +46,13 @@
         @Html.DisplayFor(modelItem => item.highqty)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.discount)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.stores.stor_name)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.discount)
+        @Html.DisplayFor(modelItem => item.stor_id)
     </td>
     <td>
         @Html.ActionLink("Details", "Details", new { id1 = item.discounttype, id2 = item.discount })

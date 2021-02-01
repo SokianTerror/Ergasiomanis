@@ -19,36 +19,41 @@ namespace Ergasiomanis.Controllers
         public ActionResult Index()
         {
             IQueryable<stores> list = db.stores;
-            string strname = Request.QueryString["stname"];
-            string strad = Request.QueryString["stadr"];
-            string city = Request.QueryString["city"];
-            string state = Request.QueryString["state"];
-            string zip = Request.QueryString["zip"];
-
-            if(strname != null && strname != "")
+            string StoreName = Request.QueryString["StoreName"];
+            string StoreAddress = Request.QueryString["StoreAddress"];
+            string StoreCity = Request.QueryString["StoreCity"];
+            string StoreState = Request.QueryString["StoreState"];
+            string StoreZip = Request.QueryString["StoreZip"];
+            string StoreId = Request.QueryString["StoreId"];
+            if(StoreId != null && StoreId != "")
             {
-                strname = strname.Trim();
-                list = list.Where(p => p.stor_name.Contains(strname));
+                StoreId = StoreId.Trim();
+                list = list.Where(m => m.stor_id.Contains(StoreId));
             }
-            if (strad != null && strad != "")
+            if(StoreName != null && StoreName != "")
             {
-                strad = strad.Trim();
-                list = list.Where(p => p.stor_address.Contains(strad));
+                StoreName = StoreName.Trim();
+                list = list.Where(m => m.stor_name.Contains(StoreName));
             }
-            if (city != null && city != "")
-            { 
-                city = city.Trim();
-                list = list.Where(p => p.city.Contains(city));
-            }
-            if (state != null && state != "")
+            if(StoreAddress != null && StoreAddress != "")
             {
-                state = state.Trim();
-                list = list.Where(p => p.state.Contains(state));
+                StoreAddress = StoreAddress.Trim();
+                list = list.Where(m => m.stor_address.Contains(StoreAddress));
             }
-            if (zip != null && zip != "")
+            if(StoreCity != null && StoreCity != "")
             {
-                zip = zip.Trim();
-                list = list.Where(p => p.zip.Contains(zip));
+                StoreCity = StoreAddress.Trim();
+                list = list.Where(m => m.city.Contains(StoreCity));
+            }
+            if(StoreState != null && StoreState != "")
+            {
+                StoreState = StoreState.Trim();
+                list = list.Where(m => m.state.Contains(StoreState));
+            }
+            if (StoreZip != null && StoreZip != "")
+            {
+                StoreZip = StoreZip.Trim();
+                list = list.Where(m => m.zip.Contains(StoreZip));
             }
             return View(list.ToList());
         }

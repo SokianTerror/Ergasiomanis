@@ -6,29 +6,31 @@
 <h2>Search</h2>
 <form>
     <table class="table">
-        <tr><td>Title</td><td>Type</td><td>From Price</td><td>To Price</td><td>From Advance</td><td>To Advance</td></tr>
+        <tr><td>Title Id</td><td>Title</td><td>Type</td><td>From Price</td><td>To Price</td><td>From Advance</td></tr>
         <tr>
-            <td><input type="text" id="titlesTitle" name="titlesTitle" /></td>
+            <td><input type="text" style="width:205px" id="titlesTitleId" name="titlesTitleId" /></td>
+            <td><input type="text" style="width:205px" id="titlesTitle" name="titlesTitle" /></td>
             <td><input type="text" id="titlesType" name="titlesType" /></td>
             <td><input type="number" id="titlesFromPrice" name="titlesFromPrice" /></td>
             <td><input type="number" id="titlesToPrice" name="titlesToPrice" /></td>
             <td><input type="number" id="titlesFromAdvance" name="titlesFromAdvance" /></td>
-            <td><input type="number" id="titlesToAdvance" name="titlesToAdvance" /></td>
+            
         </tr>
-        <tr><td>From Royalty</td><td>To Royalty</td><td>From Times Sold</td><td>To Times Sold</td><td>Notes</td></tr>
+        <tr><td>To Advance</td><td>From Royalty</td><td>To Royalty</td><td>From Times Sold</td><td>To Times Sold</td><td>Notes</td></tr>
         <tr>
-            <td><input type="number" id="titlesFromRoyalty" name="titlesFromRoyalty" /></td>
+            <td><input type="number" style="width:205px" id="titlesToAdvance" name="titlesToAdvance" /></td>
+            <td><input type="number" style="width:205px" id="titlesFromRoyalty" name="titlesFromRoyalty" /></td>
             <td><input type="number" id="titlesToRoyalty" name="titlesToRoyalty" /></td>
             <td><input type="number" id="titlesFromTimesSold" name="titlesFromTimesSold" /></td>
             <td><input type="number" id="titlesToTimesSold" name="titlesToTimesSold" /></td>
             <td><input type="text" id="titlesNotes" name="titlesNotes" /></td>
         </tr>
         <tr><td>From Release Date</td><td>To Release Date</td>
-        <td>Publisher Name</td><td>Title Id</td></tr>
+        <td>Publisher Name</td></tr>
         <tr>
-        <td><input type="date" id="titlesFromReleaseDate" name="titlesFromReleaseDate"/></td>
-        <td><input type="date" id="titlesToReleaseDate" name="titlesToReleaseDate" /></td><td><input type="text" id="titlesPublisherName" name="titlesPublisherName"/></td>
-        <td><input type="text" id="titlesTitleId" name="titlesTitleId"/></td>
+        <td><input type="date" style="width:205px" id="titlesFromReleaseDate" name="titlesFromReleaseDate"/></td>
+        <td><input type="date" style="width:205px" id="titlesToReleaseDate" name="titlesToReleaseDate" /></td><td><input type="text" id="titlesPublisherName" name="titlesPublisherName"/></td>
+        
         </tr>
         <tr><td><button class="buttona" type="submit">Search</button>   <button class="buttona" type="reset">Reset</button></td></tr>
     </table>
@@ -50,6 +52,9 @@
     }
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title_id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.title)
         </th>
@@ -77,14 +82,14 @@
         <th>
             @Html.DisplayNameFor(model => model.publishers.pub_name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roysched.title_id)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
 <tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.title_id)
+    </td>
     <td>
         @Html.DisplayFor(modelItem => item.title)
     </td>
@@ -111,9 +116,6 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.publishers.pub_name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.roysched.title_id)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.title_id }) |

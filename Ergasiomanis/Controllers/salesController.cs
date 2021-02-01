@@ -27,7 +27,12 @@ namespace Ergasiomanis.Controllers
             string salesPaymentTerms = Request.QueryString["salesPaymentTerms"];
             string salesStoreName = Request.QueryString["salesStoreName"];
             string salesTitle = Request.QueryString["salesTitle"];
-
+            string salesOrdNum = Request.QueryString["salesOrderNumber"];
+            if(salesOrdNum != null && salesOrdNum !="")
+            {
+                salesOrdNum = salesOrdNum.Trim();
+                list = list.Where(m => m.ord_num.Contains(salesOrdNum));
+            }
             if(salesFromOrderDate !=null && salesFromOrderDate != "")
             {
                 DateTime salesFromOrderDate2 = DateTime.Parse(salesFromOrderDate);

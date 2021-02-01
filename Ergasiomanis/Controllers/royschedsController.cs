@@ -26,8 +26,13 @@ namespace Ergasiomanis.Controllers
             string FromHighRange = Request.QueryString["FromHighRange"];
             string ToHighRange = Request.QueryString["ToHighRange"];
             string FromRoyalty = Request.QueryString["FromRoyalty"];
-            string ToRoyalty = Request.QueryString["ToRoyalty"];            
-
+            string ToRoyalty = Request.QueryString["ToRoyalty"];
+            string titleId = Request.QueryString["titleId"];
+            if(titleId != null && titleId !="")
+            {
+                titleId = titleId.Trim();
+                roysched = roysched.Where(m => m.title_id.Contains(titleId));
+            }
             if(FromLowRange!=null && FromLowRange != "")
             {
                 int FromLowRange2 = Convert.ToInt32(FromLowRange);

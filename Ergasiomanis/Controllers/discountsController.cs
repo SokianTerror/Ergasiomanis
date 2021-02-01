@@ -27,6 +27,12 @@ namespace Ergasiomanis.Controllers
             string StoreName = Request.QueryString["StoreName"];
             string FromDiscount = Request.QueryString["FromDiscount"];
             string ToDiscount = Request.QueryString["ToDiscount"];
+            string storeId = Request.QueryString["storeId"];
+            if(storeId != null && storeId != "")
+            {
+                storeId = storeId.Trim();
+                list = list.Where(m => m.stor_id.Contains(storeId));
+            }
             if(FromLowQuantity != null && FromLowQuantity != "")
             {
                 short FromLowQuantity2 = Convert.ToInt16(FromLowQuantity);

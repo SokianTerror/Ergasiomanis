@@ -30,7 +30,12 @@ namespace Ergasiomanis.Controllers
             string employeeToHireDate = Request.QueryString["employeeToHireDate"];
             string employeeJobDesc = Request.QueryString["employeeJobDesc"];
             string employeePublisherName = Request.QueryString["employeePublisherName"];
-
+            string employeeId = Request.QueryString["employeeId"];
+            if(employeeId != null && employeeId != "")
+            {
+                employeeId = employeeId.Trim();
+                list = list.Where(m => m.emp_id.Contains(employeeId));
+            }
             if(employeeLastName != null && employeeLastName != "")
             {
                 employeeLastName = employeeLastName.Trim();

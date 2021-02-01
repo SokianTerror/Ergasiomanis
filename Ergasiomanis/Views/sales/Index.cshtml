@@ -6,11 +6,21 @@
 <h2>Search</h2>
 <form>
     <table class="table">
-        <tr><td>From Order Date</td><td>To Order Date</td><td>From Quantity</td><td>To Quantity</td><td>Payments Terms</td><td>Store Name</td><td>Title</td></tr>
-        <tr><td><input type="date" style="width:250px" id="salesFromOrderDate" name="salesFromOrderDate"/></td><td><input type="date" id="salesToOrderDate" name="salesToOrderDate"/></td>
-        <td><input type="number" id="salesFromQuantity" name="salesFromQuantity"/></td><td><input type="number" id="salesToQuantity" name="salesToQuantity"/></td>
-        <td><input type="text" id="salesPaymentTerms" name="salesPaymentTerms"/></td><td><input type="text" id="salesStoreName" name="salesStoreName"/></td>
-        <td><input type="text" id="salesTitle" name="salesTitle"/></td></tr>
+        <tr><td>Order Number</td><td>From Order Date</td><td>To Order Date</td><td>From Quantity</td><td>To Quantity</td><td>Payments Terms</td></tr>
+        <tr>
+            <td><input type="text" id="salesOrderNumber" style="width:205px" name="salesOrderNumber" /></td>
+            <td><input type="date" style="width:205px" id="salesFromOrderDate" name="salesFromOrderDate" /></td>
+            <td><input type="date" style="width:205px" id="salesToOrderDate" name="salesToOrderDate" /></td>
+            <td><input type="number" id="salesFromQuantity" name="salesFromQuantity" /></td>
+            <td><input type="number" id="salesToQuantity" name="salesToQuantity" /></td>
+            <td><input type="text" id="salesPaymentTerms" name="salesPaymentTerms" /></td>
+        </tr>
+
+        <tr><td>Store Name</td><td>Title</td></tr>
+        <tr>
+            <td><input type="text" id="salesStoreName" style="width:205px" name="salesStoreName" /></td>
+            <td><input type="text" style="width:205px" id="salesTitle" name="salesTitle" /></td>
+        </tr>
         <tr><td><button class="buttona" type="submit">Search</button>   <button class="buttona" type="reset">Reset</button></td></tr>
     </table>
 </form>
@@ -21,6 +31,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ord_num)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ord_date)
         </th>
@@ -40,28 +53,31 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ord_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.qty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.payterms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stores.stor_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titles.title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id1 = item.stor_id, id2 = item.ord_num, id3 = item.title_id }) |
-            @Html.ActionLink("Details", "Details", new { id1 = item.stor_id, id2 = item.ord_num, id3 = item.title_id }) |
-            @Html.ActionLink("Delete", "Delete", new {  id1 = item.stor_id, id2 = item.ord_num, id3 = item.title_id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ord_num)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ord_date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.qty)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.payterms)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.stores.stor_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.titles.title)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id1 = item.stor_id, id2 = item.ord_num, id3 = item.title_id }) |
+        @Html.ActionLink("Details", "Details", new { id1 = item.stor_id, id2 = item.ord_num, id3 = item.title_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id1 = item.stor_id, id2 = item.ord_num, id3 = item.title_id })
+    </td>
+</tr>
 }
 
 </table>

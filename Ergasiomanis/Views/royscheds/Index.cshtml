@@ -6,11 +6,13 @@
 <h2>Search</h2>
 <form>
     <table class="table">
-        <tr><td>From Low Range</td><td>To Low Range</td><td>From High Range</td><td>To High Range</td><td>From Royalty</td><td>To Royalty</td></tr>
-        <tr><td><input type="number" id="FromLowRange" name="FromLowRange"/></td><td><input type="number" id="ToLowRange" name="ToLowRange"/></td>
-        <td><input type="number" id="FromHighRange" name="FromHighRange"/></td><td><input type="number" id="ToHighRange" name="ToHighRange"/></td>
-        <td><input type="number" id="FromRoyalty" name="FromRoyalty"/></td><td><input type="number" id="ToRoyalty" name="ToRoyalty"/></td>
+        <tr><td>Title Id</td><td>From Low Range</td><td>To Low Range</td><td>From High Range</td><td>To High Range</td></tr>
+        <tr><td><input type="text" id="titleId" name="titleId"/></td>
+            <td><input type="number" id="FromLowRange" name="FromLowRange"/></td><td><input type="number" id="ToLowRange" name="ToLowRange"/></td>
+        <td><input type="number" id="FromHighRange" name="FromHighRange"/></td><td><input type="number" id="ToHighRange" name="ToHighRange"/></td>    
         </tr>
+        <tr><td>From Royalty</td><td>To Royalty</td></tr>
+        <tr><td><input type="number" id="FromRoyalty" name="FromRoyalty" /></td><td><input type="number" id="ToRoyalty" name="ToRoyalty" /></td></tr>
         <tr><td><button class="buttona" type="submit">Search</button>   <button class="buttona" type="reset">Reset</button></td></tr>
     </table>
 </form>
@@ -19,6 +21,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.title_id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.lorange)
         </th>
         <th>
@@ -26,33 +31,29 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.royalty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title_id)
-        </th>
-        <th></th>
+        </th>       
     </tr>
 
 
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.lorange)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hirange)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.royalty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title_id)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty }) 
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.title_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.lorange)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.hirange)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.royalty)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.title_id, id2 = item.lorange, id3 = item.hirange, id4 = item.royalty })
+    </td>
+</tr>
 }
 
 </table>

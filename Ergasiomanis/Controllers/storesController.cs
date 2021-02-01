@@ -117,7 +117,7 @@ namespace Ergasiomanis.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "stor_id,stor_name,stor_address,city,state,zip")] stores stores)
-        {
+        { 
             if (ModelState.IsValid)
             {
                 db.Entry(stores).State = EntityState.Modified;

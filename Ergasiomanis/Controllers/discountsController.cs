@@ -17,8 +17,7 @@ namespace Ergasiomanis.Controllers
 
         // GET: discounts
         public ActionResult Index()
-        {
-            //var discounts = db.discounts.Include(d => d.stores);
+        {            
             IQueryable<discounts> list = db.discounts.Include(d => d.stores);
             string FromLowQuantity = Request.QueryString["FromLowQuantity"];
             string ToLowQuantity = Request.QueryString["ToLowQuantity"];

@@ -368,7 +368,6 @@
     <Content Include="Views\publishers\Details.cshtml" />
     <Content Include="Views\publishers\Edit.cshtml" />
     <Content Include="Views\publishers\Index.cshtml" />
-    <Content Include="Views\authors\topau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

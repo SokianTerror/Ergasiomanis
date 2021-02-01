@@ -117,8 +117,8 @@ namespace Ergasiomanis.Controllers
             if (publisher == null)
             {
                 return HttpNotFound();
-            }
-            
+            }           
+
             return File(publisher.pub_info.logo, "image/png");
         }
 

@@ -127,18 +127,14 @@ namespace Ergasiomanis.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers, [Bind(Include = "pub_id,pr_info")] pub_info pub_info)
+        public ActionResult Create([Bind(Include = "pub_id,logo,pr_info")] pub_info pub_info,[Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers)
         {
-            if (ModelState.IsValid)
-            {
                 db.publishers.Add(publishers);
                 pub_info.pub_id = publishers.pub_id;
+                //pub_info.logo = pub;
                 db.pub_info.Add(pub_info);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
-            return View(publishers);
         }
 
         // GET: publishers/Edit/5
@@ -197,8 +193,7 @@ namespace Ergasiomanis.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             try {
-                pubgl.mes = "Succesfull delete";
-                pubgl.qu = true;
+                
                 publishers publishers = db.publishers.Find(id);
                 foreach (pub_info egg in db.pub_info.Where(x => x.pub_id == id))
                 {
@@ -227,15 +222,17 @@ namespace Ergasiomanis.Controllers
                     }
 
                 }
-                foreach (employee egg5 in db.employee.Where(x => x.pub_id == id)) {
+                foreach (employee egg5 in db.employee.Where(x => x.pub_id == id))
+                {
                     db.employee.Remove(egg5);
                 }
                 db.publishers.Remove(publishers);
+                pubgl.mes = "Succesfull delete";
+                pubgl.qu = true;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             } catch(Exception e)
             {
-                pubgl.mes = "Unsuccessfull delete";
                 pubgl.qu = true;
                 return RedirectToAction("Index");
             }

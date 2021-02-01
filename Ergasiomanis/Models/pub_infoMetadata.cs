@@ -13,8 +13,8 @@ namespace Ergasiomanis.Models
         [StringLength(4, MinimumLength = 4, ErrorMessage = "Publisher Id must be 4 characters!")]
         public string pub_id;
 
-        [Display(Name = "Logo")]
-        public byte[] logo;
+       // [Display(Name = "Logo")]
+      //  public byte[] logo;
 
         [Display(Name = "Publisher Info")]
         public string pr_info;

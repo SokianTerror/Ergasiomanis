@@ -18,7 +18,39 @@ namespace Ergasiomanis.Controllers
         // GET: stores
         public ActionResult Index()
         {
-            return View(db.stores.ToList());
+            IQueryable<stores> list = db.stores;
+            string strname = Request.QueryString["stname"];
+            string strad = Request.QueryString["stadr"];
+            string city = Request.QueryString["city"];
+            string state = Request.QueryString["state"];
+            string zip = Request.QueryString["zip"];
+
+            if(strname != null && strname != "")
+            {
+                strname = strname.Trim();
+                list = list.Where(p => p.stor_name.Contains(strname));
+            }
+            if (strad != null && strad != "")
+            {
+                strad = strad.Trim();
+                list = list.Where(p => p.stor_address.Contains(strad));
+            }
+            if (city != null && city != "")
+            { 
+                city = city.Trim();
+                list = list.Where(p => p.city.Contains(city));
+            }
+            if (state != null && state != "")
+            {
+                state = state.Trim();
+                list = list.Where(p => p.state.Contains(state));
+            }
+            if (zip != null && zip != "")
+            {
+                zip = zip.Trim();
+                list = list.Where(p => p.zip.Contains(zip));
+            }
+            return View(list.ToList());
         }
 
         // GET: stores/Details/5

@@ -114,11 +114,15 @@ namespace Ergasiomanis.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             publishers publisher = db.publishers.Find(id);
+            pub_info pub_info = db.pub_info.Find(id);
             if (publisher == null)
             {
                 return HttpNotFound();
             }
-            
+            if (pub_info == null || pub_info.logo==null)
+            {
+                return View();
+            }
             return File(publisher.pub_info.logo, "image/png");
         }
 
@@ -160,16 +164,19 @@ namespace Ergasiomanis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "pub_id,logo,pr_info")] pub_info pub_info, [Bind(Include = "pub_id,pub_name,city,state,country")] publishers publishers )
         {
-            if (ModelState.IsValid)
-            {
                 db.Entry(publishers).State = EntityState.Modified;
                 pub_info.pub_id = publishers.pub_id;
-                db.Entry(pub_info).State = EntityState.Modified;
+                pub_info pi = db.pub_info.Find(publishers.pub_id);
+                if(pi != null) {
+                    db.Entry(pub_info).State = EntityState.Modified;
+                }
+            else
+            {
+                db.pub_info.Add(pub_info);
+            }
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
-            return View(publishers);
+                ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
         }
 
         // GET: publishers/Delete/5

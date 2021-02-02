@@ -27,8 +27,7 @@ namespace Ergasiomanis.Controllers
         {
             ViewBag.Message = titlegl.mes;
             ViewBag.ar = titlegl.qu;
-            titlegl.qu = false;
-            //var titles = db.titles.Include(t => t.publishers).Include(t => t.roysched);
+            titlegl.qu = false;            
             IQueryable<titles> list = db.titles.Include(t => t.publishers).Include(t => t.roysched);
             string titlesTitle = Request.QueryString["titlesTitle"];
             string titlesType = Request.QueryString["titlesType"];

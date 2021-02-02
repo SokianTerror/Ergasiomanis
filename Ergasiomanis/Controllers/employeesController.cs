@@ -17,9 +17,7 @@ namespace Ergasiomanis.Controllers
 
         // GET: employees
         public ActionResult Index()
-        {   
-
-            //var employee = db.employee.Include(e => e.jobs).Include(e => e.publishers);
+        {               
             IQueryable<employee> list = db.employee.Include(e => e.jobs).Include(e => e.publishers);
             string employeeLastName = Request.QueryString["employeeLastName"];
             string employeeFirstName = Request.QueryString["employeeFirstName"];

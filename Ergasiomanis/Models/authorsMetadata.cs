@@ -10,7 +10,7 @@ namespace Ergasiomanis.Models
     {
         [Display(Name = "Author Id")]
         [Required]
-        [StringLength(11, ErrorMessage = "Author id should not be more than 11 characters!")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Author id should not be more than 11 characters!")]
         public string au_id;
 
         [Display(Name = "Last Name")]

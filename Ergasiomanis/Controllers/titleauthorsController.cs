@@ -18,7 +18,6 @@ namespace Ergasiomanis.Controllers
         // GET: titleauthors
         public ActionResult Index()
         {
-            //var titleauthor = db.titleauthor.Include(t => t.authors).Include(t => t.titles);
             IQueryable<titleauthor> list = db.titleauthor.Include(t => t.authors).Include(t => t.titles);
             string FromAuthorOrder = Request.QueryString["FromAuthorOrder"];
             string ToAuthorOrder = Request.QueryString["ToAuthorOrder"];

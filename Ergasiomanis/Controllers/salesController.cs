@@ -18,7 +18,6 @@ namespace Ergasiomanis.Controllers
         // GET: sales
         public ActionResult Index()
         {
-            //var sales = db.sales.Include(s => s.stores).Include(s => s.titles);
             IQueryable<sales> list = db.sales.Include(s => s.stores).Include(s => s.titles);
             string salesFromOrderDate = Request.QueryString["salesFromOrderDate"];
             string salesToOrderDate = Request.QueryString["salesToOrderDate"];

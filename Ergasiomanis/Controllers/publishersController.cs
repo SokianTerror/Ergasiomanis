@@ -101,11 +101,11 @@ namespace Ergasiomanis.Controllers
             if (publisher == null)
             {
                 return HttpNotFound();
-            }
+           }
             if (pub_info == null || pub_info.logo==null)
             {
                 return View();
-            }
+            } 
             return File(publisher.pub_info.logo, "image/png");
         }
 
@@ -149,17 +149,16 @@ namespace Ergasiomanis.Controllers
         {
                 db.Entry(publishers).State = EntityState.Modified;
                 pub_info.pub_id = publishers.pub_id;
-                pub_info pi = db.pub_info.Find(publishers.pub_id);
-                if(pi != null) {
+                if(pub_info != null) {
                     db.Entry(pub_info).State = EntityState.Modified;
                 }
-            else
-            {
-                db.pub_info.Add(pub_info);
-            }
+                else
+                {
+                    db.pub_info.Add(pub_info);
+                } 
                 db.SaveChanges();
-                return RedirectToAction("Index");
-                ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
+            ViewBag.pub_id = new SelectList(db.pub_info, "pub_id", "pr_info", publishers.pub_id);
+            return RedirectToAction("Index");
         }
 
         // GET: publishers/Delete/5
